@@ -1,0 +1,183 @@
+body {
+	background:url(../img/bg.jpg);
+	font-family: 'Port Lligat Slab', serif;
+	-webkit-overflow-scrolling: touch;
+}
+
+.container {
+	background:black;
+}
+
+ul {
+	list-style: none;
+}
+
+
+/* Layout
+/*=========================*/
+
+.l-mobile-pic{
+	position: relative;
+	z-index: 2;
+	width:100%;
+}
+
+.l-pic-shadow {
+	width:93%;
+	position: absolute;
+	bottom:-12%;
+	left:5px;
+}
+
+.l-one-list{
+	margin-left:40px;
+	margin-bottom:50px;
+}
+
+	.l-one-list li{
+		position: relative;
+		margin-bottom:20px;
+		-webkit-perspective: 1200px;
+    	-webkit-perspective-origin: 50% 0%;
+	}
+
+.l-one-list li .li-wrapper{
+		-webkit-transform: rotateX(20deg);
+		-webkit-transform-origin: 0 0;
+		-webkit-transition:0.8s linear;
+}		
+
+.l-one-list li.flip .pics{
+	-webkit-transform: rotateX(0deg);
+}
+		.l-one-list .time{
+			color:white;
+			text-shadow:0 0 4px #333;
+			position: absolute;
+			top:0px;
+			left:-52px;
+			z-index:3;
+		}
+
+			.l-one-list .time span{
+				float: left;
+				text-align: right;
+				width:37px;
+			}
+
+			.l-one-list .time img{
+				width:14px;
+			}
+
+.l-date {
+	width:87px;
+	height:36px;
+	line-height: 36px;
+	text-align: center;
+	color:#505050;
+	font-size:16px;
+	font-weight:bold;
+	text-shadow:0 1px 0 rgba(255,255,255,0.9);
+	position: relative;
+	z-index: 2;
+}
+
+	.l-date span{
+		z-index:3;
+		position: relative;
+	}
+
+	.l-date img{
+		width:100%;
+		position: absolute;
+		top:0;
+		left:0;
+		z-index:2;
+	}
+
+
+/* The rest....
+/*=========================*/
+.mobile-timeline {
+	position: relative;
+}
+
+.timeline {
+	width:50px;
+	border-left:3px solid #e50026;
+	height:100.9%;
+	position: absolute;
+	top:10px;
+	left:30px;
+	z-index:1;
+
+}
+
+.mobile-header {
+	padding:20px 0 40px;
+}
+
+	.mobile-header img{
+		width:100%;
+		display: block;
+	}
+
+.pics{
+	border:5px solid white;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+
+	-webkit-box-shadow:0 0 5px rgba(0,0,0,0.3);
+	-moz-box-shadow:0 0 5px rgba(0,0,0,0.3);
+	box-shadow:0 0 5px rgba(0,0,0,0.3);
+
+	width:93%;
+}
+
+
+/* Pic toolbar
+/*=========================*/
+.toolbar {
+	background:rgba(0,0,0,0.5);
+	height:30px;
+	width:93%;
+	position: absolute;
+	bottom:5px;
+	left:5px;
+	z-index: 5;
+}
+
+.toolbar-wrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+a.download{
+	text-transform: uppercase;
+	text-decoration: underline;
+	color:#fff;
+	position: absolute;
+	bottom:0px;
+	left:5px;
+	z-index: 5;
+	line-height: 25px;
+}
+
+	.download img{
+		width:25px;
+		margin-right:5px;
+	}
+
+.share {
+	background:url('../img/facebook.png') no-repeat 0 0;
+	text-transform: uppercase;
+	text-decoration: underline;
+	color:#fff;
+	padding-left:20px;
+	position: absolute;
+	bottom:5px;
+	right:8px;
+	z-index: 5;
+}
