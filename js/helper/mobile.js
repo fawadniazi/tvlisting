@@ -6,9 +6,6 @@ define(['helper/app','libs/text!template/mobile.tpl'],function(App,mobile){
 		template: Em.Handlebars.compile(mobile),
 		didInsertElement: function(){
 			App.router.get('applicationController').fetchSmall();
-		},
-		ssharePics:function(){
-			alert('123');
 		}
 	});
 

@@ -11,7 +11,7 @@
 				<p class="l-date"><span>{{prettyDay}}</span> <img src="img/date-bg.png"></p>
 				<ul class="l-one-list">
 					{{#each arr}}
-					<li>
+					<li class="l-li">
 						<p class="time"><span>{{prettyTime}}</span> <img src="img/dot.png"></p>
 						<div class="li-wrapper">
 							<img class="l-mobile-pic pics" {{bindAttr src="imgSrc"}}>
@@ -27,7 +27,7 @@
 					{{/each}}
  			</ul>
  			{{/each}}
- 			<div class="timeline"></div>
+ 			<div class="timeline l-timeline"></div>
  			</div>
 		</div>
 	</div>

@@ -12,6 +12,25 @@ define(['libs/text!template/app.tpl','helper/utils'],function(application,utils)
 				success:function(xml){
 					var json = utils.xmlToJson(xml);
 					self.reOrg(json);
+					var group = self.reOrg(json);
+					console.log(group);
+					App.router.get('mobileController').set('content',group);
+				}
+			});
+		},
+		fetchMedium: function(){
+			var self = this;
+			$.ajax({
+				type:'GET',
+				url: self.baseURL,
+				data:{'prefix':'small/','marker':'small'},
+				success:function(xml){
+					var json = utils.xmlToJson(xml);
+					self.reOrg(json);
+					var group = self.reOrg(json);
+					console.log(group);
+					group = self.splitTwo(group);
+					App.router.get('desktopController').set('content',group);
 				}
 			});
 		},
@@ -20,22 +39,13 @@ define(['libs/text!template/app.tpl','helper/utils'],function(application,utils)
 				contents = _.pluck(json,'Contents')[0],
 				self =this;
 					
-			_.each(contents,function(num,i){
-				if(i){
-					var arrObj = {};
-					arrObj.date = num.LastModified['#text'];
-					arrObj.prettyDay = moment(arrObj.date).format('MMM Do YY');
-					arrObj.prettyTime = moment(arrObj.date).format('hh:mm');
-					arrObj.imgSrc = self.baseURL+num.Key['#text'];
-					arrObj.original = self.baseURL+(num.Key['#text'].replace('small/','original/'));
-					arr.push(arrObj);
-				}
-			});
+			arr = self.modifyInfo(contents);
+
 			//Sample data
 			// arr.push({date:"2013-10-01T08:47:38.000Z",prettyDay:"1st Oct 13"});
 			// arr.push({date:"2013-09-04T08:47:38.000Z",prettyDay:"4th Sep 13"});
 
-			var group = _.groupBy(arr,function(obj){
+			var group = _.groupBy(arr.reverse(),function(obj){
 				return obj.prettyDay;
 			});
 
@@ -49,76 +59,79 @@ define(['libs/text!template/app.tpl','helper/utils'],function(application,utils)
 				obj.prettyDay = moment(arr[0].date).format('MMM Do');
 				return obj;
 			});
-
-			App.router.get('mobileController').set('content',group.reverse());
-			setTimeout(function(){
-				liArr = $('li');
-
-
-			},2000);
 			
+			// We reverse it because we want descending date
+			return group.reverse();
+		},
+		modifyInfo:function(contents){
+			// Add Original Source, prettify the date for categorisation
+
+			var self = this;
+			var arr= [];
+			_.each(contents,function(num,i){
+				if(i){
+					var arrObj = {};
+					arrObj.date = num.LastModified['#text'];
+					arrObj.prettyDay = moment(arrObj.date).format('MMM Do YY');
+					arrObj.prettyTime = moment(arrObj.date).format('hh:mm a');
+					arrObj.imgSrc = self.baseURL+num.Key['#text'];
+					arrObj.original = self.baseURL+(num.Key['#text'].replace('small/','medium/'));
+					arr.push(arrObj);
+				}
+			});
+
+			return arr;
+		},
+		splitTwo:function(arr){
+			
+			_.each(arr,function(obj){
+				var arrLeft = [],
+					arrRight = [];
+				_.each(obj.arr,function(arr,index){
+					if(!(index%2)){
+						arrRight.push(arr);
+					} else {
+						arrLeft.push(arr);
+					}
+				});
+				obj.arrLeft = arrLeft;
+				obj.arrRight = arrRight;
+			});
+			return arr;
 		},
 		sharePics:function(evt){
 			var self = this;
-
-			console.log(evt);
 			
 			FB.ui({
 				method:'feed',
 				link:'http://google.com',
-				picture:"http://img-upload.s3.amazonaws.com/small/20120917055858.jpg",
+				picture:$(evt.currentTarget).attr('data-img'),
 				name:"Travel the World"
 			},function(data){
 				if(typeof data != 'undefined'){
 					alert('Image shared!');
 				}
 			});
-			// FB.getLoginStatus(function(response) {
-			// 	if (response.status === 'connected') {
-			// 	// the user is logged in and has authenticated your
-			// 	// app, and response.authResponse supplies
-			// 	// the user's ID, a valid access token, a signed
-			// 	// request, and the time the access token 
-			// 	// and signed request each expire
-			// 	var uid = response.authResponse.userID;
-			// 	var accessToken = response.authResponse.accessToken;
-			// 	alert('123')
-			// 		self.callFB();
-			// 	} else if (response.status === 'not_authorized') {
-			// 		// the user is logged in to Facebook, 
-			// 		// but has not authenticated your app
-			// 		alert('456')
-			// 		self.callFB();
-					
-			// 	} else {
-			// 	// the user isn't logged in to Facebook.
-			// 	alert('789')
-			// 	}
-				return false;
-			//});
+			
+			return false;
 		},
-		callFB:function(){
-			alert('qqq');
-			FB.login(function(response) {
-					if (response.authResponse) {
-						var imgUrl = 'https://img-upload.s3.amazonaws.com/small/20120917055858.jpg';
-						FB.ui({
-							method:'feed',
-							link:'http://google.com',
-							picture:"https://img-upload.s3.amazonaws.com/small/20120917055858.jpg"
-						},function(){
-							console.log('Sent');
-						});
-					} else {
-						console.log('User cancelled login or did not fully authorize.');
-					}
-				},{ scope: 'publish_stream' });
+		startBindings:function(){
+			$(window).resize(function(){
+				if(utils.getWidth() >= 940){
+					App.router.transitionTo('desktop.index');
+				} else {
+					App.router.transitionTo('mobile.index');
+				}
+			});
 		}
 		
 	});
 
 	App.ApplicationView = Em.View.extend({
-		template: Em.Handlebars.compile(application)
+		template: Em.Handlebars.compile(application),
+		didInsertElement:function(){
+			console.log(this.get('controller').startBindings());
+		}
 	});
 
 	return App;
