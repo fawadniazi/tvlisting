@@ -51,18 +51,26 @@ ul
 	width:93%;
 	position: relative;
 	z-index: 2;
+	min-height:30px;
 }
 
 .l-pic-shadow 
 	width:93%;
+	height:100%
 	position: absolute;
 	bottom:-12%;
 	left:5px;
 
 .l-li
-	position: relative;
-	margin-bottom:20px;
+	position: relative
+	margin-bottom:20px
+	
 
+.li-wrapper
+	position: relative
+	opacity:0
+	-webkit-transition:1s ease-in-out
+	-webkit-transform: translateY(-10px)
 
 /* Mobile List
 /*=========================*/
@@ -226,4 +234,21 @@ ul
 			bottom:5px;
 			right:8px;
 			z-index: 5;
+
+/* Load Rest
+/*=========================*/
+
+.load-rest 
+	width:100%
+	margin-left:0
+
+	li
+		width:154px
+		margin:0 auto
+
+		a
+			font-size:16px
+
+
+
 

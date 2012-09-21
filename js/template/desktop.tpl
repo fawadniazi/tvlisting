@@ -45,5 +45,8 @@
 				</ul>
 			</div>
 		{{/each}}
+		<ul class="load-rest">
+			<li><a class="btn" href="#" {{action loadRest target="view"}}>Load Earlier Pictures</a></li>
+		</ul>
 	</div>
 </div><!-- container -->

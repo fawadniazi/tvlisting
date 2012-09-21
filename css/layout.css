@@ -4,9 +4,10 @@ ul{list-style:none}
 .l-date span{z-index:3;position:relative}
 .l-date img{width:100%;position:absolute;top:0;left:0;z-index:2}
 .l-timeline{width:50px;border-left:3px solid #e50026;height:100.9%;position:absolute;z-index:1}
-.pics{border:5px solid #fff;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;-webkit-box-shadow:0 0 5px rgba(0,0,0,0.3);-moz-box-shadow:0 0 5px rgba(0,0,0,0.3);box-shadow:0 0 5px rgba(0,0,0,0.3);width:93%;position:relative;z-index:2}
-.l-pic-shadow{width:93%;position:absolute;bottom:-12%;left:5px}
+.pics{border:5px solid #fff;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;-webkit-box-shadow:0 0 5px rgba(0,0,0,0.3);-moz-box-shadow:0 0 5px rgba(0,0,0,0.3);box-shadow:0 0 5px rgba(0,0,0,0.3);width:93%;position:relative;z-index:2;min-height:30px}
+.l-pic-shadow{width:93%;height:100%;position:absolute;bottom:-12%;left:5px}
 .l-li{position:relative;margin-bottom:20px}
+.li-wrapper{position:relative;opacity:0;-webkit-transition:1s ease-in-out;-webkit-transform:translateY(-10px)}
 .l-one-list{margin-left:40px;margin-bottom:50px;}
 .l-one-list .time{color:#fff;text-shadow:0 0 4px #333;position:absolute;top:0;left:-52px;z-index:3;}
 .l-one-list .time span{float:left;text-align:right;width:37px;font-size:14px}
@@ -37,3 +38,6 @@ ul{list-style:none}
 .toolbar .toolbar-wrapper a.download{text-transform:uppercase;text-decoration:underline;color:#fff;position:absolute;bottom:0;left:5px;z-index:5;line-height:25px;}
 .toolbar .toolbar-wrapper a.download img{width:25px;margin-right:5px}
 .toolbar .toolbar-wrapper .share{background:url("../img/facebook.png") no-repeat 0 0;text-transform:uppercase;text-decoration:underline;color:#fff;padding-left:20px;position:absolute;bottom:5px;right:8px;z-index:5}
+.load-rest{width:100%;margin-left:0;}
+.load-rest li{width:154px;margin:0 auto;}
+.load-rest li a{font-size:16px}

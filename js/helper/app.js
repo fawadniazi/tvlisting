@@ -3,6 +3,7 @@ define(['libs/text!template/app.tpl','helper/utils'],function(application,utils)
 
 	App.ApplicationController = Em.Controller.extend({
 		baseURL:"https://img-upload.s3.amazonaws.com/",
+		tempArr:[],
 		fetchSmall: function(){
 			var self = this;
 			$.ajax({
@@ -14,7 +15,11 @@ define(['libs/text!template/app.tpl','helper/utils'],function(application,utils)
 					self.reOrg(json);
 					var group = self.reOrg(json);
 					console.log(group);
+					group = self.truncate(group);
 					App.router.get('mobileController').set('content',group);
+					Em.run.next(this,function(){
+						self.appear();
+					});
 				}
 			});
 		},
@@ -30,7 +35,11 @@ define(['libs/text!template/app.tpl','helper/utils'],function(application,utils)
 					var group = self.reOrg(json);
 					console.log(group);
 					group = self.splitTwo(group);
+					group = self.truncate(group);
 					App.router.get('desktopController').set('content',group);
+					Em.run.next(this,function(){
+						self.appear();
+					});
 				}
 			});
 		},
@@ -123,6 +132,38 @@ define(['libs/text!template/app.tpl','helper/utils'],function(application,utils)
 					App.router.transitionTo('mobile.index');
 				}
 			});
+		},
+		appear:function(){
+			var time = 200;
+			$(".pics").one('load', function() {
+				$(this).parents('.li-wrapper').addClass('loaded');
+				$(this).parents('.li-wrapper').css({'opacity':'1','-webkit-transform': 'translateY(0px)'});
+
+			}).each(function() {
+				if(this.complete) $(this).load();
+			});
+		},
+		truncate:function(group) {
+			var firstGrp = [];
+
+			if(group.length >2){
+				
+				firstGrp = [group[0],group[1]];
+
+				App.router.get('applicationController').tempArr = _.reject(group,function(num,index){
+					return (index === 0 || index === 1);
+				});
+
+				console.log(group);
+				console.log(firstGrp);
+				console.log(App.router.get('applicationController').tempArr);
+			} else if(group.length){
+				App.router.get('applicationController').tempArr = [];
+				firstGrp = group;
+				$('.load-rest').css('display','none');
+			}
+
+			return firstGrp;
 		}
 		
 	});
@@ -130,7 +171,7 @@ define(['libs/text!template/app.tpl','helper/utils'],function(application,utils)
 	App.ApplicationView = Em.View.extend({
 		template: Em.Handlebars.compile(application),
 		didInsertElement:function(){
-			console.log(this.get('controller').startBindings());
+			this.get('controller').startBindings();
 		}
 	});
 
