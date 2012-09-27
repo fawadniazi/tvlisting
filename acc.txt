@@ -1,0 +1,5 @@
+Login URL: https://130308772744.signin.aws.amazon.com/console
+Username: travel-the-world
+Password:B6QISrJNaz[r
+Access Key Id:AKIAIMMEKO52BEAWPQOA
+Secret Access Key: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
