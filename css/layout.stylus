@@ -1,298 +1,32 @@
 @import url("bootstrap.min.css");
-@import url("prettyPhoto.css");
-@font-face {
-  font-family: 'Port Lligat Slab';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Port Lligat Slab'), local('PortLligatSlab-Regular'), url('http://themes.googleusercontent.com/static/fonts/portlligatslab/v2/CUEdhRk7oC7up0p6t0g4PzsubemXTgcCsqFGmxQzGDk.woff') format('woff');
-}
 
-body
-	background: url(../img/bg.jpg)
-	font-family: 'Port Lligat Slab', serif
-
+/*-------------------------------------------- Global style ---------------------------------------------*/
 ul 
 	list-style: none
 
-/* Layout
-/*=========================*/
-.l-date
-	width:87px;
-	height:36px;
-	line-height: 36px;
-	text-align: center;
-	color:#505050;
-	font-size:16px;
-	font-weight:bold;
-	text-shadow:0 1px 0 rgba(255,255,255,0.9);
-	position: relative;
-	z-index: 2;
+/*-------------------------------------------- Override ESPN template ---------------------------------------------*/
 
-	span
-		z-index:3;
-		position: relative;
+#wrapper-head, #wrapper-body, #wrapper-foot
+	margin-left: 12px
 
-	img
-		width:100%;
-		position: absolute;
-		top:0;
-		left:0;
-		z-index:2;
+#footer
+	margin-left: 0
 
+#logos
+	margin-left: 0 !important
 
-.l-timeline
-	width:50px;
-	border-left:3px solid #e50026;
-	height:100.9%;
-	position: absolute;
-	z-index:1;
+input[type="text"]
+	border-radius: 0
+	height: 15px
+/*-------------------------------------------- Desktop style ---------------------------------------------*/
 
-.pics{
-	border:5px solid white;
-	-webkit-border-radius:5px;
-	-moz-border-radius:5px;
-	border-radius:5px;
+.espntv_desktop
+	width: 925px;
+	float: left;
+	padding-left: 20px;
 
-	-webkit-box-shadow:0 0 5px rgba(0,0,0,0.3);
-	-moz-box-shadow:0 0 5px rgba(0,0,0,0.3);
-	box-shadow:0 0 5px rgba(0,0,0,0.3);
+/*-------------------------------------------- Media queries ---------------------------------------------*/
 
-	width:93%;
-	position: relative;
-	z-index: 2;
-	min-height:30px;
-}
-
-.l-pic-shadow 
-	width:93%;
-	height:100%
-	position: absolute;
-	bottom:-12%;
-	left:5px;
-
-.l-li
-	position: relative
-	margin-bottom:20px
-	
-
-.li-wrapper
-	position: relative
-	opacity:0
-	-webkit-transition:1s ease-in-out
-	-webkit-transform: translateY(-10px)
-
-/* Mobile List
-/*=========================*/
-.l-one-list
-	margin-left:40px;
-	margin-bottom:50px;
-
-	.time
-		color:white;
-		text-shadow:0 0 4px #333;
-		position: absolute;
-		top:0px;
-		left:-52px;
-		z-index:3;
-
-		span
-			float: left;
-			text-align: right;
-			width:37px;
-			font-size:14px
-
-		img
-			width:14px
-
-	.l-mobile-pic
-		width:93%;
-	
-	
-
-
-.mobile-timeline 
-	position: relative;
-
-	.timeline
-		top:10px;
-		left:30px;
-
-.mobile-header
-	padding:20px 0 40px;
-
-	img
-		width:100%;
-		display: block;
-		max-width: 402px;
-		margin: 0 auto;
-
-
-/* Desktop View
-/*=========================*/
-#desktop-view
-	background:url(../img/timeline.jpg) repeat-y 50% 50%
-
-	.l-date
-		margin-left:auto
-		margin-right:auto
-		margin-top:-20px
-
-	.l-li
-		margin-bottom:40px
-.l-two-list
-	overflow:hidden
-	padding-bottom: 20px
-
-	ul
-		width:50%
-		margin:0px 0 30px 0
-
-
-	.time
-		color:white;
-		text-shadow:0 0 4px #333;
-		z-index:3;
-		font-size:18px
-		margin-bottom:3px
-
-	.list-left
-		float:left
-		margin-top:85px
-
-
-		.li-wrapper
-			position: relative
-			right:-6px
-
-		.time
-			text-align:right
-			margin-right:-7px
-
-			span
-				text-align: right;
-				width:37px;
-				margin-right:8px
-
-			img
-				width:14px
-
-	.list-right
-		float:right
-
-		.li-wrapper
-			position: relative
-			left:20px
-
-		.time
-			width:99px
-			color:white;
-			text-shadow:0 0 4px #333;
-			z-index:3;
-			margin-left:-6px
-
-			span
-				float: right;
-				text-align: right;
-				width:78px;
-
-			img
-				width:14px
-
-
-/* Pic toolbar
-/*=========================*/
-.toolbar 
-	background:rgba(0,0,0,0.5);
-	height:30px;
-	width:93%;
-	position: absolute;
-	bottom:5px;
-	left:5px;
-	z-index: 5;
-
-
-	.toolbar-wrapper 
-		position: relative;
-		width: 100%;
-		height: 100%;
-	
-
-		a.download
-			text-transform: uppercase;
-			text-decoration: underline;
-			color:#fff;
-			position: absolute;
-			bottom:0px;
-			left:5px;
-			z-index: 5;
-			line-height: 25px;
-		
-
-			img
-				width:25px;
-				margin-right:5px;
-			
-
-		.share 
-			background:url('../img/facebook.png') no-repeat 0 0;
-			text-transform: uppercase;
-			text-decoration: underline;
-			color:#fff;
-			padding-left:20px;
-			position: absolute;
-			bottom:5px;
-			right:8px;
-			z-index: 5;
-
-/* Load Rest
-/*=========================*/
-
-.load-rest 
-	width:100%
-	margin-left:0
-
-	li
-		width:154px
-		margin:0 auto
-
-		a
-			font-size:16px
-
-.load-next
-	width:100%
-	margin-left:0
-	display: none
-
-	li
-		width:155px
-		margin:0 auto
-		padding-bottom: 30px
-
-		a
-			font-size:16px
-
-
-/* Video
-/*=========================*/
-
-#video
-	position: absolute
-	left: 10px
-	top: 30px
-	width: 50px
-
-/* Time-selector
-/*=========================*/
-
-#time-selector
-	position: fixed
-	right:  10px
-	top: 10px
-	font-size: 12pt
-	z-index:100;
-	
-	li
-		margin: 5px auto
-
-		&.active
-			color: white
+@media all and (min-width: 480px) and (max-width: 900px)
+	#header
+		display: none

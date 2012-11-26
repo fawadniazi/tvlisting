@@ -1,45 +1,14 @@
-define(['helper/app','libs/text!template/mobile.tpl'],function(App,mobile){
-	
-	App.MobileController = Em.Controller.extend();
-
+define(['helper/app','libs/text!template/mobile.tpl'],function(App,templ){
 
 	App.MobileView = Em.View.extend({
-		template: Em.Handlebars.compile(mobile),
+		template: Em.Handlebars.compile(templ),
 		didInsertElement: function(){
-			var self=this;
-			var appCtr = App.router.get('applicationController');
-
-			$time_selector = $('#time-selector li');
-			$time_selector.unbind('click touchend');
-			$time_selector.bind('click touchend',function(){
-				index = $time_selector.index(this);
-				$time_selector.parent().find('li.active').removeClass('active');
-				$time_selector.eq(index).addClass('active');
-				
-				var startIndex = appCtr.selectTime(index);
-				if (startIndex != -1){
-					console.log('insert group '+startIndex);
-					appCtr.insertGroup(self.get('controller').get('content'),startIndex);
-				}
-			});
-			$('.load-next').die();
-			$('.load-next').live('click touchend',function(){
-				var index = $(this).parent().find('ul.load-next').index(this);
-				var realIndex = $.inArray(self.get('controller').get('content')[index],appCtr.allGroups);
-				appCtr.insertGroup(self.get('controller').get('content'),realIndex+1);
-			});
-			appCtr.fetchSmall();
-		},
-		loadRest:function(){
-			var group = App.router.get('applicationController').tempArr;
-			group = App.router.get('applicationController').truncate(group);
-
-			this.get('controller').get('content').addObjects(group);
-			Em.run.next(this,function(){
-				App.router.get('applicationController').appear();
-			});
-
+			
 		}
+	});
+
+	App.MobileController = Em.Controller.extend({
+
 	});
 
 });

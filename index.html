@@ -2,13 +2,13 @@
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> <!--<![endif]-->
 <head>
 
 	<!-- Basic Page Needs
   ================================================== -->
 	<meta charset="utf-8">
-	<title>Travel The World</title>
+	<title>ESPN TV Listing</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<!--[if lt IE 9]>
@@ -17,31 +17,88 @@
 
 	<!-- Mobile Specific Metas
   ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-	<!-- CSS
-  ================================================== -->
-	<!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
-	<link rel="stylesheet" href="css/layout.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 	<!-- Web Font
   ================================================== -->
 	<!--<link href='http://fonts.googleapis.com/css?family=Port+Lligat+Slab' rel='stylesheet' type='text/css'>-->
 
+	<!-- ESPN template
+  ================================================== -->
 
+	<script type="text/javascript" src="http://www.espnstar.com/generated_files/pub_module/script/s870.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://www.espnstar.com/generated_files/pub_module/css/c37.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="http://www.espnstar.com/generated_files/pub_module/css/c312.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="http://www.espnstar.com/generated_files/pub_module/css/c311.css" media="screen">
+	<script src="http://www.espnstar.com/generated_files/pub_module/script/s34.js" type="text/javascript"></script>
+	<script src="http://www.espnstar.com/generated_files/pub_module/script/s187.js" type="text/javascript"></script>
+	<meta name="generator" content="VYRE Unify 4.5.0.2 (www.vyre.com)">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="http://www.espnstar.com/generated_files/pub_module/css/c37.css" media="screen">
+	<script src="http://www.espnstar.com/generated_files/pub_module/script/s1.js" type="text/javascript"></script>
+	<script src="http://www.espnstar.com/generated_files/pub_module/script/s2.js" type="text/javascript"></script>
+	<script src="http://www.espnstar.com/generated_files/pub_module/script/s4.js" type="text/javascript"></script>
+	<script src="http://www.espnstar.com/generated_files/pub_module/script/s11.js" type="text/javascript"></script>
+	<script type="text/javascript" async src="http://www9.effectivemeasure.net/v4/em_js?flag=0&v=e0a910c840b07455c737134dcb5050af18ff01f3b7-8779050850af1a7f&vt=17d530c2777349662fb5374e343d50ad9bf177d968-5919242450af1a7f&hl=1&sv=-1&pv=&pn=&p=aHR0cDovL3d3dy5lc3Buc3Rhci5jb20vZGV2ZWxvcG1lbnQvdGVtcGxhdGVfZm9vdGVyLw%3D%3D&r=&f=1&ns=_em&rnd=0.2530510271899402&u=&sf=1&"></script>
+	<script type="text/javascript" async="" src="http://sg-cdn.effectivemeasure.net/em.js"></script>
+	<script async="" src="http://b.scorecardresearch.com/beacon.js"></script>
+	<script src="http://www.espnstar.com/generated_files/pub_module/script/s807.js" type="text/javascript"></script>
+	<link rel="shortcut icon" href="http://www.espnstar.com/other_files/favicon.ico" type="image/x-icon">
+	<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+	<!--[if lte IE 6]>
+		<link rel="stylesheet" type="text/css" href="http://www.espnstar.com/generated_files/pub_module/css/c35.css" media="screen" />
+	<![endif]-->
+        <!--[if gt IE 6]>
+		<link rel="stylesheet" type="text/css" href="http://www.espnstar.com/generated_files/pub_module/css/c313.css" media="screen" />
+	<![endif]-->
+	
+	<script src="http://www.espnstar.com/generated_files/pub_module/script/s776.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="http://www.espnstar.com/generated_files/pub_module/css/c714.css" media="screen">	
+	<!-- CSS
+  ================================================== -->
+	<!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
+	<link rel="stylesheet" href="css/layout.css">
+	
 </head>
 <body>
 
-	<div id="fb-root"></div>
+	<!--<div id="fb-root"></div>
 	<script>
-	  window.fbAsyncInit = function() {
-	    FB.init({
-	      appId      : '443847892325004', // App ID
-	      status     : true, // check login status
-	      cookie     : true, // enable cookies to allow the server to access mthe session
+
+		var FBauth = false;
+		var FBpublish = false;
+		var userID = 0;
+
+	  	window.fbAsyncInit = function() {
+		    FB.init({
+		      appId      : '517625661581859', // App ID
+		      status     : true, // check login status
+		      cookie     : true, // enable cookies to allow the server to access mthe session
 	    });
 
 	    // Additional initialization code here
+	 //    FB.getLoginStatus(function(response) {
+		//     if (response.status === 'connected') {
+		//       FBauth= true;
+		//       userID = response.authResponse.userID;
+		//       FB.api('/me/permissions', function (response) {
+		// 	            var perms = response.data[0];
+
+		// 	            if (perms.publish_stream) {                
+		// 	                // User has permission
+		// 	                FBpublish = true;
+		// 	            } else {                
+		// 	                // User DOESN'T have permission
+		// 	                FBpublish = false;
+		// 	            }                                            
+		// 	    } );
+		//     } else if (response.status === 'not_authorized') {
+		//       FBauth = false;
+		//     } else {
+		//       FBauth = false;
+		//     }
+		// });
+
 	  };
 
 	  // Load the SDK Asynchronously
@@ -52,7 +109,111 @@
 	     js.src = "//connect.facebook.net/en_US/all.js";
 	     ref.parentNode.insertBefore(js, ref);
 	   }(document));
+
+	  function shareFB(){
+	  	postFB();
+	  	// if (FBauth && FBpublish){
+	  	// 	postFB();
+	  	// }
+	  	// else{
+	  	// 	FB.login(function(response){
+	  	// 		if (response.authResponse) {
+				//      FBauth = true;
+				//      userID = response.authResponse.userID;
+				//      postFB();
+				//    } else {
+				//      //console.log('User cancelled login or did not fully authorize.');
+				//    }
+	  	// 	},{scope:'publish_stream'});
+	  	// }
+
+	  	// prompt dialog for user to share
+	  	function postFB(){
+	  		console.log('share to FB');
+	  		var obj = {
+	          method: 'feed',
+	          link: 'https://developers.facebook.com/docs/reference/javascript/',
+	          picture: 'http://www.fbrell.com/public/f8.jpg',
+	          name: 'ESPN TV',
+	          caption: 'TV program listing by ESPN',
+	          description: 'The solution is developed by 2359 Media'
+	        };
+
+	        FB.ui(obj, function(response) {
+			    if (response && response.post_id) {
+			      console.log('Post was published.');
+			      console.log(response);
+			    } else {
+			      console.log('Post was not published.');
+			    }
+			  });
+		 }
+
+		 // auto post on user's feed
+		 // function postFB(){
+	  // 		console.log('share to FB');
+	  // 		var param = {
+	  // 			//'app_id':'517625661581859',
+	  // 			'link':'https://developers.facebook.com/docs/reference/dialogs/',
+	  // 			'picture':'http://fbrell.com/f8.jpg',
+	  // 			'name':'ESPN TV',
+	  // 			'caption':'TV program listing by ESPN',
+	  // 			'description':'The solution is developed by 2359 Media'
+	  // 		};
+	  // 		var body = 'Reading JS SDK documentation';
+			// FB.api('/me/feed', 'post', param, function(response) {
+			//   if (!response || response.error) {
+			//     console.log('Error occured');
+			//   } else {
+			//     console.log('Post ID: ' + response.id);
+			//   }
+			// });
+		 // }
+	  	}
+	  	
+	  	function shareTwitter(){
+		 	console.log('shareTwitter');
+		 	window.open('https://twitter.com/share?text=sample text even space can work amazing &url=http://www.gooogle.com','','left=0,top=0,status=no,location=no,menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=320');
+		}
+
+		function renderGP(){
+			var param = {
+				'action':'share',
+				'href':'http://gothere.sg',
+				'annotation':'none'
+			};
+			gapi.plus.render('gplus',param);
+		}
+
+		function shareGP(){
+			console.log('share google +');
+			window.open('https://plus.google.com/share?url=http://gothere.sg','','top=0,left=0,menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=320');
+		// 	href="https://plus.google.com/share?url={URL}" onclick="javascript:window.open(this.href,
+  // '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"
+		}
 	</script>
+	<button onclick="shareFB()">ShareFB</button>
+
+	<button onclick="shareTwitter()">ShareTwitter</button>
+	<a><img src="https://twitter.com/favicons/favicon.ico"></a>
+
+	<div id="gplus" class="g-plus" data-action="share" data-href="http://gothere.sg" data-annotation="none" data-expandTo="right" data-width="60" data-height="20"></div>
+	<script type="text/javascript">
+		window.___gcfg = {
+		  lang: 'en-US',
+		  parsetags: 'explicit'//explicit | onload
+		};
+	  (function() {
+	    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+	    po.src = 'https://apis.google.com/js/plusone.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	  })();
+	</script>
+	<button onclick="shareGP()">Share Google+</button>
+<a><img src="https://www.gstatic.com/images/icons/gplus-16.png" alt="Share on Google+"/></a>-->
+	<!--<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://google.com" data-text="sample text" data-via="TrinhVuHoang" data-count="none">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>-->
+	
 
 	<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script>!window.jQuery && document.write(unescape('%3Cscript src="js/libs/jquery-1.7.1.min.js"%3E%3C/script%3E'))</script>-->
@@ -61,9 +222,11 @@
 	<script src="js/libs/hb.min.js"></script>-->
 	<!--<script src="js/libs/ember-pre.fix.js"></script>-->
 	<!--<script src="js/libs/moment.min.js"></script>-->
-	<script src="js/libs/master.js"></script>
-	<script src="js/libs/jquery.prettyPhoto.js"></script>
-	<script data-main="js/main.js" src="js/libs/require.js"></script>
-
+	<script src="js/libs/master.min.js"></script>
+	<script src="js/libs/css3-mediaqueries.js"></script>
+	<!--<script src="js/libs/jquery.prettyPhoto.js"></script>-->
+	<script data-main="js/main.js" src="js/libs/require.min.js"></script>
+	
+	
 </body>
 </html>

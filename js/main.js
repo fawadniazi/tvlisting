@@ -7,7 +7,7 @@ require(['helper/app','helper/utils','helper/desktop','helper/mobile'],function(
 			index:Em.Route.extend({
 				route:'/',
 				connectOutlets:function(router){
-					if(utils.getWidth() >= 940){
+					if(utils.getWidth() > 480){
 						router.transitionTo('desktop.index');
 					} else {
 						router.transitionTo('mobile.index');
@@ -19,7 +19,7 @@ require(['helper/app','helper/utils','helper/desktop','helper/mobile'],function(
 				index: Ember.Route.extend({
 					route: '/',
 					connectOutlets:function(router){
-						if(utils.getWidth() <= 940){
+						if(utils.getWidth() <= 480){
 							router.transitionTo('mobile.index');
 						} else {
 							router.get('applicationController').connectOutlet('desktop');
@@ -32,8 +32,7 @@ require(['helper/app','helper/utils','helper/desktop','helper/mobile'],function(
 				index: Ember.Route.extend({
 					route: '/',
 					connectOutlets:function(router){
-						
-						if(utils.getWidth() >= 940){
+						if(utils.getWidth() > 480){
 							router.transitionTo('desktop.index');
 						} else {
 							router.get('applicationController').connectOutlet('mobile');

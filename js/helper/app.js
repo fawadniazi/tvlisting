@@ -1,11 +1,24 @@
-define(['libs/text!template/app.tpl','helper/utils'],function(application,utils){
+define(['libs/text!template/app.tpl','helper/utils'],function(templ,utils){
 	window.App = window.App || Em.Application.create();
 
+	App.ApplicationView = Em.View.extend({
+		template: Em.Handlebars.compile(templ),
+		didInsertElement:function(){
+			//this.get('controller').appendHeaderFooter();
+			//this.get('controller').startBindings();
+		}
+	});
+
 	App.ApplicationController = Em.Controller.extend({
-		baseURL:"https://img-upload.s3.amazonaws.com/",
-		tempArr:[],
-		allGroups:[],
-		groupsInfo:[],
+
+		appendHeaderFooter: function(){
+			var header = '\x3cscript>at_attach("sample_attach_menu_parent", "sample_attach_menu_child", "click", "y", "pointer");$("#global_search_button").click(search);$("#global_search_input").keypress(function(e){if(e.which == 13){search();}});function search(){window.location.href="/search-results/?s="+escape($("#global_search_input")[0].value);}if(/MSIE (\d+\.\d+);/.test(navigator.userAgent)){var ieversion=new Number(RegExp.$1);if(ieversion < 7){$("li").each(function(){$(this).hover(function(){$(this).addClass("sfhover");},function(){$(this).removeClass("sfhover");})});}}\x3c/script>';
+			$('body').append(header);
+
+			var footer = '\x3cscript language="JavaScript" type="text/javascript"><!--var thisPageName ="";var game = "";if(thisPageName==""){section = ":default";gameType = ":super-selector";}else{section = ":"+thisPageName;gameType = ":"+game;}s_omni.pageName="games"+gameType+section;s_omni.server="";s_omni.channel="games";s_omni.pageType="";s_omni.prop1="www.espnstar.com";s_omni.prop2="";s_omni.prop3="";s_omni.prop4="game";s_omni.prop5=gameType;s_omni.prop25="football";s_omni.prop30="n";s_omni.hier1=s_omni.pageName;s_omni.campaign="";s_omni.state="";s_omni.zip="";s_omni.events="";s_omni.products="";s_omni.purchaseID="";s_omni.eVar1="";s_omni.eVar2="";s_omni.eVar3="";s_omni.eVar4="";s_omni.eVar5="";var s_code=s_omni.t();if(s_code)document.write(s_code);//-->\x3c/script>\x3cscript language="JavaScript" type="text/javascript"><!--if(navigator.appVersion.indexOf("MSIE")>=0)document.write(unescape("%3C")+"\!-"+"-");//-->\x3c/script>\x3cscript>var _comscore = _comscore || [];_comscore.push({ c1: "2", c2: "3000005" });(function() {var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";el.parentNode.insertBefore(s, el);})();\x3c/script>\x3cscript type="text/javascript">(function(){var em = document.createElement("script"); em.type = "text/javascript"; em.async = true;em.src = ("https:" == document.location.protocol ? "https://sg-ssl" : "http://sg-cdn") + ".effectivemeasure.net/em.js";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(em, s);})();\x3c/script>\x3cscript type="text/javascript">_uacct = "UA-4432811-1";urchinTracker();\x3c/script>';
+			$('body').append(footer);
+		},
+		
 		fetchSmall: function(){
 			var self = this;
 			$.ajax({
@@ -31,277 +44,19 @@ define(['libs/text!template/app.tpl','helper/utils'],function(application,utils)
 				}
 			});
 		},
-		fetchMedium: function(){
-			var self = this;
-			$.ajax({
-				type:'GET',
-				url: self.baseURL,
-				data:{'prefix':'small/','marker':'small'},
-				success:function(xml){
-					var json = utils.xmlToJson(xml);
-					//self.reOrg(json);
-					var group = self.reOrg(json);
-					group = self.splitTwo(group);
-					self.allGroups = group;
-					// group = self.truncate(group);
-					//console.log(group);
-					App.router.get('desktopController').set('content',[]);
-					App.router.get('desktopController').get('content').push(group[0]);
-					Em.run.next(this,function(){
-						self.appear();
-					});
-					self.updateGroupsInfo();
-					self.groupsInfo[0].loaded=true;
-					Em.run.next(this,function(){
-						self.updateLoadBtns(App.router.get('desktopController').get('content'),0);
-					});
-					
-					// self.groupsInfo[1].loaded=true;
-					//console.log(self.groupsInfo);
-				}
-			});
-		},
-		reOrg:function(json){
-			var arr = [],
-				contents = _.pluck(json,'Contents')[0],
-				self =this;
-					
-			arr = self.modifyInfo(contents);
-
-			//Sample data
-			// arr.push({date:"2013-10-01T08:47:38.000Z",prettyDay:"1st Oct 13"});
-			// arr.push({date:"2013-09-04T08:47:38.000Z",prettyDay:"4th Sep 13"});
-
-			var group = _.groupBy(arr.reverse(),function(obj){
-				return obj.prettyDay;
-			});
-
-			group = _.sortBy(group,function(arr){
-				return arr[0].date;
-			});
-
-			group = _.map(group,function(arr){
-				var obj = {};
-				obj.arr = arr;
-				obj.prettyDay = moment(arr[0].date).format('MMM DD');
-				return obj;
-			});
-			
-			// We reverse it because we want descending date
-			return group.reverse();
-		},
-		modifyInfo:function(contents){
-			// Add Original Source, prettify the date for categorisation
-
-			var self = this;
-			var arr= [];
-			_.each(contents,function(num,i){
-				if(i){
-					var arrObj = {};
-					arrObj.date = num.LastModified['#text'];
-					arrObj.prettyDay = moment(arrObj.date).format('MMM DD YY');
-					arrObj.prettyTime = moment(arrObj.date).format('hh:mm a');
-					arrObj.imgSrc = self.baseURL+num.Key['#text'];
-					arrObj.original = self.baseURL+(num.Key['#text'].replace('small/','medium/'));
-					arr.push(arrObj);
-				}
-			});
-
-			return arr;
-		},
-		splitTwo:function(arr){
-			
-			_.each(arr,function(obj){
-				var arrLeft = [],
-					arrRight = [];
-				_.each(obj.arr,function(arr,index){
-					if(!(index%2)){
-						arrRight.push(arr);
-					} else {
-						arrLeft.push(arr);
-					}
-				});
-				obj.arrLeft = arrLeft;
-				obj.arrRight = arrRight;
-			});
-			return arr;
-		},
-		sharePics:function(evt){
-			var self = this;
-			
-			FB.ui({
-				method:'feed',
-				link:'http://google.com',
-				picture:$(evt.currentTarget).attr('data-img'),
-				name:"Travel the World"
-			},function(data){
-				if(typeof data != 'undefined'){
-					alert('Image shared!');
-				}
-			});
-			
-			return false;
-		},
+		
 		startBindings:function(){
 			var self = this;
 			$(window).resize(function(){
-				if(utils.getWidth() >= 940){
+				if(utils.getWidth() > 480){
 					App.router.transitionTo('desktop.index');
 				} else {
 					App.router.transitionTo('mobile.index');
 				}
 			});
 			
-		},
-		appear:function(){
-			//var time = 200;
-			$(".pics").one('load', function() {
-				$(this).parents('.li-wrapper').addClass('loaded');
-				$(this).parents('.li-wrapper').css({'opacity':'1','-webkit-transform': 'translateY(0px)'});
-
-			}).each(function() {
-				if(this.complete) $(this).load();
-			});
-		},
-		truncate:function(group) {
-			var firstGrp = [];
-
-			if(group.length >2){
-				
-				firstGrp = [group[0],group[1]];
-
-				App.router.get('applicationController').tempArr = _.reject(group,function(num,index){
-					return (index === 0 || index === 1);
-				});
-
-				console.log(group);
-				console.log(firstGrp);
-				console.log(App.router.get('applicationController').tempArr);
-			} else if(group.length){
-				App.router.get('applicationController').tempArr = [];
-				firstGrp = group;
-				$('.load-rest').css('display','none');
-			}
-
-			return firstGrp;
-		},
-		selectTime: function(index){
-			var selectedDate={};
-			var startIndex = -1;
-			var self=this;
-			if (index === 0){
-				selectedDate = moment();
-				//selectedDate = moment().format("MMM DD YY");
-				console.log(selectedDate);
-			}else
-			if (index == 1){
-				selectedDate = moment().subtract('days',1);//.format("MMM DD YY");
-				console.log(selectedDate);
-			}else
-			if (index == 2){
-				selectedDate = moment().subtract('days',3);//.format("MMM DD YY");
-				console.log(selectedDate);
-			}else
-			if (index == 3){
-				selectedDate = moment().subtract('days',5);//.format("MMM DD YY");
-				console.log(selectedDate);
-			}else
-			if (index == 4){
-				selectedDate = moment().subtract('days',7);//.format("MMM DD YY");
-				console.log(selectedDate);
-			}
-			var tmpDate={};
-			for (i=0; i < self.groupsInfo.length; i++){
-				tmpDate = moment(self.groupsInfo[i].date,"MMM DD YY");
-				if (selectedDate.diff(tmpDate) >= 0){
-					startIndex = i;
-					break;
-				}
-			}
-			console.log('group index: '+startIndex);
-			return startIndex;
-		},
-		updateGroupsInfo: function(){
-			var self = this;
-			self.groupsInfo = [];
-			var tmp={};
-			$.each(self.allGroups,function(index,obj){
-				tmp={};
-				tmp.date = obj.arr[0].prettyDay;
-				tmp.count = obj.arr.length;
-				tmp.loaded = false;
-				self.groupsInfo.push(tmp);
-			});
-		},
-		getInsertIndex: function(groupIndex){
-			var self=this;
-			var insertIndex = 0;
-			if (groupIndex === 0) return 0;
-			else
-			for (i=0; i < groupIndex;i++){
-				if (self.groupsInfo[i].loaded){
-					insertIndex += 1;
-				}
-			}
-			console.log('insert index: '+insertIndex);
-			return insertIndex;
-		},
-		insertGroup: function(arr,groupIndex){
-			var self=this;
-			if (groupIndex < 0 || groupIndex == self.allGroups.length) return;
-			if (!self.groupsInfo[groupIndex].loaded){
-				var insertIndex = self.getInsertIndex(groupIndex);
-				arr.insertAt(insertIndex,self.allGroups[groupIndex]);
-				self.groupsInfo[groupIndex].loaded = true;
-				Em.run.next(this,function(){
-					self.appear();
-					self.updateLoadBtns(arr,groupIndex);
-				});
-			}
-			Em.run.next(this,function(){
-				var viewPos = $("[id='"+self.allGroups[groupIndex].prettyDay+"']").offset().top;
-				//window.scrollTo(viewPos.left,viewPos.top);
-				$('body').animate({scrollTop:viewPos},600);
-			});
-		},
-		updateLoadBtns: function(arr,groupIndex){
-			var self = this;
-			var viewIdx = $.inArray(self.allGroups[groupIndex],arr);
-			var loadNext = false, disPrevNext = false;
-			
-			if (groupIndex !== 0){
-				if (self.groupsInfo[groupIndex-1].loaded){
-					disPrevNext = true;
-				}
-			}
-			if (groupIndex != (self.allGroups.length-1)){
-				if (!self.groupsInfo[groupIndex+1].loaded){
-					loadNext = true;
-				}
-			}
-			console.log(viewIdx);
-			
-			console.log('load next: '+loadNext);
-			console.log('dis prev next: '+disPrevNext);
-			
-			
-			if (loadNext){
-				$('ul.load-next').eq(viewIdx).css('display','block');
-			}
-			if (disPrevNext){
-				$('ul.load-next').eq(viewIdx-1).css('display','none');
-			}
 		}
-
 		
-	});
-
-	App.ApplicationView = Em.View.extend({
-		template: Em.Handlebars.compile(application),
-		didInsertElement:function(){
-			this.get('controller').startBindings();
-			$("a[rel^='prettyPhoto']").prettyPhoto({allow_resize: true,allow_expand:false});
-		}
 	});
 
 	return App;
