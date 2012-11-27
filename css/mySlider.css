@@ -1,0 +1,87 @@
+/* --------------------------------------------- mySlider styles ------------------------------*/
+.mySlider_container {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.mySlider_container .mySlider_arrow {
+  float: left;
+  height: 100%;
+  width: 8%;
+  overflow: hidden;
+  text-align: center;
+}
+.mySlider_container .mySlider_arrow img {
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.mySlider_container .mySlider_navbar {
+  float: left;
+  width: 80%;
+  height: 20%;
+  margin: 0 10%;
+  text-align: center;
+}
+.mySlider_container .mySlider_navbar ul {
+  padding: 0;
+  list-style: none;
+  font-size: 0pt;
+}
+.mySlider_container .mySlider_navbar ul li {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  overflow: hidden;
+  margin: 0 5px;
+  font-size: 11pt;
+  text-indent: 20px;
+  background-color: #e8e8e8;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.mySlider_container .mySlider_navbar ul li.active {
+  background-color: #000;
+}
+.mySlider_container .mySlider_main {
+  float: left;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+.mySlider_container .mySlider_main ul {
+  position: relative;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  height: 100%;
+}
+.mySlider_container .mySlider_main ul li {
+  position: relative;
+  float: left;
+  height: 100%;
+  text-align: center;
+  margin: 0 0 0 10px;
+}
+.mySlider_container .mySlider_main ul li img {
+  width: 100%;
+  height: 100%;
+}
+.mySlider_container .mySlider_main ul li p {
+  color: #000;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  line-height: 45px;
+}
+.mySlider_container .mySlider_main ul li:first-child {
+  margin-left: 0;
+}

@@ -3,6 +3,10 @@
 /*-------------------------------------------- Global style ---------------------------------------------*/
 ul 
 	list-style: none
+	margin: 0
+
+img.espntv_buffer
+	display: none
 
 /*-------------------------------------------- Override ESPN template ---------------------------------------------*/
 
@@ -25,8 +29,208 @@ input[type="text"]
 	float: left;
 	padding-left: 20px;
 
+/*--------------------------- Promo ------------------------*/
+
+#espntv_main_promo
+	position: relative
+	top: 0
+	left: 0
+	width: 905px
+	margin: 10px auto
+
+	div.espntv_dummy
+		padding-top: 37%
+
+	div.espntv_promo
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+
+		img
+			position: absolute
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+
+		div.espntv_msg
+			position: absolute
+			left: 0
+			bottom: 0
+			width: 35%
+			height: 40%
+			background-color: black
+			opacity: 0.7
+			filter: "alpha(opacity=70)"
+			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)"
+			filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)"
+
+		p.espntv_msg
+			position: absolute
+			bottom: 0
+			left: 0
+			width: 33%
+			height: 34%
+			text-align: left
+			color: white
+			margin: 3% 1%
+			overflow: hidden
+
+		div.espntv_slider
+			position: absolute
+			bottom: 10px
+			left: 50%
+			width: 40%
+			height: 10px
+			overflow: hidden
+
+			ul li
+				width: 10px
+				height: 10px
+				background-image: url('../img/promo_nav.png')
+				float: left
+				margin: 0 10px
+				cursor: pointer
+
+				&.selected
+					background-image: url('../img/promo_nav_selected.png')
+
+#espntv_left_promo,#espntv_right_promo
+	position: absolute
+	top: 0
+	height: 900px
+	display: block
+
+	img
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+
+#espntv_left_promo
+	left: 0
+
+#espntv_right_promo
+	right: 0
+
+/*--------------------------- Schedule ------------------------*/
+
+div.espntv_heading
+	position: relative
+	width: 905px
+	height: 40px
+	margin: 0 auto
+	line-height: 50px
+	font-size: 25px
+	color: #144181
+
+div.espntv_schedule
+	position: relative
+	width: 905px
+	min-height: 500px
+	margin: 5px auto
+
+	div.espntv_left_column
+		position: relative
+		float: left
+		width: 20%
+		height: 100%
+
+		#espntv_select_region
+			position: relative
+			width: 100%
+			height: 40px
+
+			p
+				margin: 0
+
+			div.espntv_selected_region
+				position: relative
+				border: 1px solid #B4B4B4
+				width: 98%
+				height: 20px
+				padding-left: 2px
+				line-height: 20px
+				cursor: pointer
+
+				img
+					position: absolute
+					top: 0
+					right: 0
+
+			#espntv_region_list
+				position: absolute
+				top: 39px
+				left: 0
+				width: 98%
+				border: 1px solid #B4B4B4
+				padding-left: 2px
+				cursor: pointer
+				display: none
+				background-color: white
+
+				li:hover
+					background-color: #B4B4B4
+
+		#espntv_channels
+
+			div.espntv_showing
+				background-image: url('../img/showing_now_bg.png')
+				background-repeat: repeat-x
+				width: 90%
+				margin: 15px auto 5px
+				text-align: center
+				height: 28px
+				line-height: 28px
+
+			#espntv_channel_list
+				position: relative
+				width: 98%
+				border: 1px solid #B4B4B4
+
+				li
+					height: 60px
+					text-align: center
+					line-height: 60px
+					background-color: #f2f2f2
+
+					img
+						max-height: 80%
+
+				li:nth-child(odd)
+					background-color: #dfdddd
+
+
+	div.espntv_right_column
+		position: relative
+		float: left
+		width: 80%
+		height: 100%
+
 /*-------------------------------------------- Media queries ---------------------------------------------*/
 
-@media all and (min-width: 480px) and (max-width: 900px)
+@media all and (min-width: 966px) and (max-width: 990px)
+	#bg-container
+		min-width: 320px
+
+	#holdall
+		width: 100%
+
+	#wrapper-head, #wrapper-body, #wrapper-foot
+		margin: 0 auto
+
+	#espntv_left_promo,#espntv_right_promo
+		display: none
+
+@media all and (min-width: 480px) and (max-width: 965px)
 	#header
+		display: none
+
+	#portlet_10610 /* Footer */
+		display: none
+
+	#espntv_left_promo,#espntv_right_promo
 		display: none

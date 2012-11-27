@@ -955,7 +955,9 @@ urchinTracker();
         </div>
 							</div></div>-->
 							<div id="bg-container">
-	<div style="width:100%; position:relative; height:auto; overflow-x:hidden;">
+	<div style="width:100%; position:relative; height:auto; overflow:hidden;">
+			<div id="espntv_left_promo"><img src=""><img class="espntv_buffer" src=""></div>
+			<div id="espntv_right_promo"><img src=""><img class="espntv_buffer" src=""></div>
 		<div id="holdall">
 			<div id="topBanner">
 				<div id="portlet_9514" class="portlet-wrapper vyre_portlets_AdvancedItemSearchResult">
@@ -1714,7 +1716,7 @@ urchinTracker();
 	    </div>
 	    
     </div>
-                      <!-- Include here -->
+                      <!-- Include code here -->
 {{outlet}}
  </div>
 <div id="wrapper-foot"></div>

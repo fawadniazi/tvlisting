@@ -4,7 +4,7 @@ define(['libs/text!template/app.tpl','helper/utils'],function(templ,utils){
 	App.ApplicationView = Em.View.extend({
 		template: Em.Handlebars.compile(templ),
 		didInsertElement:function(){
-			//this.get('controller').appendHeaderFooter();
+			this.get('controller').appendHeaderFooter();
 			//this.get('controller').startBindings();
 		}
 	});
