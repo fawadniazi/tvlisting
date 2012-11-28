@@ -143,6 +143,7 @@ div.espntv_schedule div.espntv_left_column #espntv_select_region {
   position: relative;
   width: 100%;
   height: 40px;
+  margin-top: 6px;
 }
 div.espntv_schedule div.espntv_left_column #espntv_select_region p {
   margin: 0;
@@ -179,17 +180,19 @@ div.espntv_schedule div.espntv_left_column #espntv_channels div.espntv_showing {
   background-image: url("../img/showing_now_bg.png");
   background-repeat: repeat-x;
   width: 90%;
-  margin: 15px auto 5px;
+  margin: 15px auto 3px;
   text-align: center;
   height: 28px;
   line-height: 28px;
 }
 div.espntv_schedule div.espntv_left_column #espntv_channels #espntv_channel_list {
   position: relative;
-  width: 98%;
-  border: 1px solid #b4b4b4;
+  width: 100%;
+  border-top: 1px solid #b4b4b4;
 }
 div.espntv_schedule div.espntv_left_column #espntv_channels #espntv_channel_list li {
+  border: 1px solid #b4b4b4;
+  border-top: none;
   height: 60px;
   text-align: center;
   line-height: 60px;
@@ -206,6 +209,224 @@ div.espntv_schedule div.espntv_right_column {
   float: left;
   width: 80%;
   height: 100%;
+}
+div.espntv_schedule div.espntv_right_column #espntv_select_date {
+  margin: 0 auto;
+}
+div.espntv_schedule div.espntv_right_column #espntv_select_date div.mySlider_main ul li {
+  background-image: url("../img/date_bg.png");
+  background-repeat: repeat;
+  line-height: 21px;
+  font-size: 14px;
+  height: 50px;
+  border-bottom: 1px solid #c2c2c2;
+  border-top: 2px solid #e7e7e7;
+  margin-left: 6px;
+}
+div.espntv_schedule div.espntv_right_column #espntv_select_date div.mySlider_main ul li p {
+  background-color: transparent;
+  color: #000;
+  width: 90%;
+  padding: 5%;
+  line-height: 20px;
+  position: relative;
+}
+div.espntv_schedule div.espntv_right_column #espntv_select_date div.mySlider_main ul li:first-child {
+  margin-left: -2px;
+}
+div.espntv_schedule div.espntv_right_column #espntv_select_date div.mySlider_main ul li.espntv_selected_date {
+  border-top: none;
+}
+div.espntv_schedule div.espntv_right_column #espntv_select_date div.mySlider_main ul li.espntv_selected_date p {
+  color: #fff;
+}
+div.espntv_schedule div.espntv_right_column #espntv_select_date div.mySlider_main ul li.espntv_selected_date img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: auto;
+}
+div.espntv_schedule div.espntv_right_column #espntv_time_line {
+  position: relative;
+  width: 100%;
+  height: 32px;
+  background-image: url("../img/time_bg.png");
+  background-repeat: repeat;
+  cursor: pointer;
+  overflow: hidden;
+  border-right: 1px solid #000;
+}
+div.espntv_schedule div.espntv_right_column #espntv_time_line ul {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 1000%;
+  height: 32px;
+}
+div.espntv_schedule div.espntv_right_column #espntv_time_line ul li {
+  position: relative;
+  float: left;
+  height: 32px;
+  line-height: 30px;
+  text-align: center;
+  width: 2%;
+  color: #fff;
+}
+div.espntv_schedule div.espntv_right_column #espntv_time_line ul li img {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+}
+div.espntv_schedule div.espntv_right_column #espntv_time_line ul li p {
+  margin: 0;
+}
+div.espntv_schedule div.espntv_right_column #espntv_time_line .espntv_time_arrow_left,
+div.espntv_schedule div.espntv_right_column #espntv_time_line .espntv_time_arrow_right {
+  position: absolute;
+  top: 0;
+  height: 30px;
+  line-height: 30px;
+  width: 20px;
+  text-align: center;
+  background-image: url("../img/time_bg.png");
+  background-repeat: repeat;
+}
+div.espntv_schedule div.espntv_right_column #espntv_time_line .espntv_time_arrow_left {
+  left: 0;
+}
+div.espntv_schedule div.espntv_right_column #espntv_time_line .espntv_time_arrow_right {
+  right: 0;
+}
+div.espntv_schedule div.espntv_right_column #espntv_programs {
+  position: relative;
+  width: 100%;
+  border-right: 1px solid #b4b4b4;
+  overflow: hidden;
+  cursor: pointer;
+}
+div.espntv_schedule div.espntv_right_column #espntv_programs ul {
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  height: 60px;
+  width: 1000%;
+  border-bottom: 1px solid #b4b4b4;
+  padding-left: 10%;
+}
+div.espntv_schedule div.espntv_right_column #espntv_programs ul li {
+  position: relative;
+  float: left;
+  width: 2%;
+  height: 60px;
+  background-image: url("../img/time_border.png");
+  background-repeat: repeat-y;
+  overflow: hidden;
+}
+div.espntv_schedule div.espntv_right_column #espntv_programs ul li.espntv_live {
+  background-image: url("../img/live_bg.png");
+  background-repeat: repeat;
+  border-left: 1px solid #b4b4b4;
+  margin-left: -1px;
+}
+div.espntv_schedule div.espntv_right_column #espntv_programs ul li div {
+  position: relative;
+  height: 30px;
+}
+div.espntv_schedule div.espntv_right_column #espntv_programs ul li img {
+  float: left;
+}
+div.espntv_schedule div.espntv_right_column #espntv_programs ul li p {
+  margin: 0;
+  color: #000;
+  padding: 0 3px;
+  text-align: left;
+  overflow: hidden;
+  height: 12px;
+  line-height: 13px;
+}
+div.espntv_schedule div.espntv_right_column #espntv_programs ul li p.espntv_normal {
+  font-size: 10px;
+}
+div.espntv_schedule div.espntv_right_column #espntv_programs ul li p.espntv_bold {
+  color: #3a577f;
+  font-size: 13px;
+  font-weight: bold;
+  height: 27px;
+  float: left;
+}
+div.espntv_schedule div.espntv_right_column #espntv_program_details {
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  width: 60%;
+  height: 60%;
+}
+div.espntv_schedule div.espntv_right_column #espntv_program_details .espntv_details_bg {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.7;
+  filter: "alpha(opacity=70)";
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+  filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  behavior: url("css/PIE.htc");
+}
+div.espntv_schedule div.espntv_right_column #espntv_program_details a.espntv_details_close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+div.espntv_schedule div.espntv_right_column #espntv_program_details .espntv_details {
+  position: absolute;
+  top: 3%;
+  left: 2%;
+  width: 96%;
+  height: 94%;
+  background-color: #fef2c2;
+  overflow: hidden;
+}
+div.espntv_schedule div.espntv_right_column #espntv_program_details .espntv_details img.espntv_details_channel {
+  margin: 5px;
+  max-width: 25%;
+}
+div.espntv_schedule div.espntv_right_column #espntv_program_details .espntv_details .espntv_details_content {
+  position: relative;
+  padding-left: 10px;
+  padding-top: 15px;
+}
+div.espntv_schedule div.espntv_right_column #espntv_program_details .espntv_details .espntv_details_content img.espntv_details_live {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+}
+div.espntv_schedule div.espntv_right_column #espntv_program_details .espntv_details .espntv_details_content p {
+  margin: 0;
+  font-size: 12px;
+}
+div.espntv_schedule div.espntv_right_column #espntv_program_details .espntv_details .espntv_details_content p.espntv_bold {
+  font-size: 14px;
+  font-weight: bold;
+}
+div.espntv_schedule div.espntv_right_column #espntv_program_details .espntv_details .espntv_details_content p.espntv_replay {
+  margin-top: 10px;
+}
+div.espntv_bottom {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+}
+div.espntv_bottom img.espntv_bottom_live_icon {
+  position: absolute;
+  top: 0;
+  left: 10px;
 }
 /*-------------------------------------------- Media queries ---------------------------------------------*/
 @media all and (min-width: 966px) and (max-width: 990px) {

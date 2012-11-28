@@ -72,15 +72,15 @@
   height: 100%;
 }
 .mySlider_container .mySlider_main ul li p {
-  color: #000;
+  background-color: #000;
+  color: #fff;
   margin: 0;
   padding: 0;
   width: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 100%;
-  line-height: 45px;
+  line-height: 100%;
 }
 .mySlider_container .mySlider_main ul li:first-child {
   margin-left: 0;

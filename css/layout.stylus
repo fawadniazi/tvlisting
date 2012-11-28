@@ -1,6 +1,13 @@
 @import url("bootstrap.min.css");
 
 /*-------------------------------------------- Global style ---------------------------------------------*/
+
+borderRadius()
+	-webkit-border-radius arguments
+	-moz-border-radius arguments
+	-o-border-radius arguments
+	border-radius arguments
+
 ul 
 	list-style: none
 	margin: 0
@@ -143,6 +150,7 @@ div.espntv_schedule
 			position: relative
 			width: 100%
 			height: 40px
+			margin-top: 6px
 
 			p
 				margin: 0
@@ -181,17 +189,19 @@ div.espntv_schedule
 				background-image: url('../img/showing_now_bg.png')
 				background-repeat: repeat-x
 				width: 90%
-				margin: 15px auto 5px
+				margin: 15px auto 3px
 				text-align: center
 				height: 28px
 				line-height: 28px
 
 			#espntv_channel_list
 				position: relative
-				width: 98%
-				border: 1px solid #B4B4B4
+				width: 100%
+				border-top: 1px solid #B4B4B4
 
 				li
+					border: 1px solid #B4B4B4
+					border-top: none
 					height: 60px
 					text-align: center
 					line-height: 60px
@@ -209,6 +219,228 @@ div.espntv_schedule
 		float: left
 		width: 80%
 		height: 100%
+
+		#espntv_select_date
+			margin: 0 auto
+
+			div.mySlider_main
+				
+				ul
+
+					li
+						background-image: url('../img/date_bg.png')
+						background-repeat: repeat
+						line-height: 21px
+						font-size: 14px
+						height: 50px
+						border-bottom: 1px solid #c2c2c2
+						border-top: 2px solid #e7e7e7
+						margin-left: 6px
+
+						p
+							background-color: transparent
+							color: black
+							width: 90%
+							padding: 5%
+							line-height: 20px
+							position: relative
+
+					li:first-child
+						margin-left: -2px
+
+					li.espntv_selected_date
+						border-top: none
+
+						p
+							color: white
+
+						img
+							position: absolute
+							top: 0
+							left: 0
+							height: auto
+
+		#espntv_time_line
+			position: relative
+			width: 100%
+			height: 32px
+			background-image: url('../img/time_bg.png')
+			background-repeat: repeat
+			cursor: pointer
+			overflow: hidden
+			border-right: 1px solid black
+
+			ul
+				position: relative
+				top: 0
+				left: 0
+				width: 1000%
+				height: 32px
+
+				li
+					position: relative
+					float: left
+					height: 32px
+					line-height: 30px
+					text-align: center
+					width: 2%
+					color: white
+					//border-left: 1px solid transparent
+
+					img
+						position: absolute
+						bottom: 0
+						left: 50%
+
+					p
+						margin: 0
+
+			.espntv_time_arrow_left, .espntv_time_arrow_right
+				position: absolute
+				top: 0
+				height: 30px
+				line-height: 30px
+				width: 20px
+				text-align: center
+				background-image: url('../img/time_bg.png')
+				background-repeat: repeat
+
+			.espntv_time_arrow_left
+				left: 0
+
+			.espntv_time_arrow_right
+				right: 0
+
+		#espntv_programs
+			position: relative
+			width: 100%
+			border-right: 1px solid #B4B4B4
+			overflow: hidden
+			cursor: pointer
+
+			ul
+				position: relative
+				top: 0
+				left: 0
+				overflow: hidden
+				height: 60px
+				width: 1000%
+				border-bottom: 1px solid #B4B4B4
+				padding-left: 10%
+
+				li
+					position: relative
+					float: left
+					width: 2%
+					height: 60px
+					//border-left: 1px solid #B4B4B4
+					background-image: url('../img/time_border.png')
+					background-repeat: repeat-y
+					overflow: hidden
+
+					&.espntv_live
+						background-image: url('../img/live_bg.png')
+						background-repeat: repeat
+						border-left: 1px solid #B4B4B4
+						margin-left: -1px
+
+					div
+						position: relative
+						height: 30px
+
+					img
+						float: left
+
+					p
+						margin: 0
+						color: black
+						padding: 0 3px
+						text-align: left
+						overflow: hidden
+						height: 12px
+						line-height: 13px
+
+					p.espntv_normal
+						font-size: 10px
+
+					p.espntv_bold
+						color: #3a577f
+						font-size: 13px
+						font-weight: bold
+						height: 27px
+						float: left
+
+		#espntv_program_details
+			position: absolute
+			top: 30%
+			left: 20%
+			width: 60%
+			height: 60%
+
+			.espntv_details_bg
+				width: 100%
+				height: 100%
+				background-color: black
+				opacity: 0.7
+				filter: "alpha(opacity=70)"
+				-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)"
+				filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)"
+				borderRadius: 10px
+				behavior: url('css/PIE.htc')
+
+			a.espntv_details_close
+				position: absolute
+				top: 5px
+				right: 5px
+				cursor: pointer
+
+			.espntv_details
+				position: absolute
+				top: 3%
+				left: 2%
+				width: 96%
+				height: 94%
+				background-color: #fef2c2
+				overflow: hidden
+
+				img.espntv_details_channel
+					margin: 5px
+					max-width: 25%
+
+				.espntv_details_content
+					position: relative
+					padding-left: 10px
+					padding-top: 15px
+
+					img.espntv_details_live
+						position: absolute
+						top: 15px
+						right: 10px
+
+					p
+						margin: 0
+						font-size: 12px
+
+					p.espntv_bold
+						font-size: 14px
+						font-weight: bold
+
+					p.espntv_replay
+						margin-top: 10px
+
+
+div.espntv_bottom
+	position: relative
+	width: 100%
+	height: 100px
+	text-align: center
+	line-height: 100px
+
+	img.espntv_bottom_live_icon
+		position: absolute
+		top: 0
+		left: 10px
+
 
 /*-------------------------------------------- Media queries ---------------------------------------------*/
 
