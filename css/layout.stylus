@@ -139,8 +139,9 @@ div.espntv_heading
 div.espntv_schedule
 	position: relative
 	width: 905px
-	min-height: 500px
+	min-height: 350px
 	margin: 5px auto
+	overflow: hidden
 
 	div.espntv_left_column
 		position: relative
@@ -330,6 +331,7 @@ div.espntv_schedule
 				width: 1000%
 				border-bottom: 1px solid #B4B4B4
 				padding-left: 10%
+				background-color: #e4e4e4
 
 				li
 					position: relative
@@ -345,11 +347,14 @@ div.espntv_schedule
 					&.espntv
 						background-color: white
 						
-					&.espntv_live
+					&.espntv.live
 						background-image: url('../img/live_bg.png')
 						background-repeat: repeat
 						border-left: 1px solid #B4B4B4
 						margin-left: -1px
+
+						p.espntv_programme
+							float: left
 
 					div
 						position: relative
@@ -367,15 +372,17 @@ div.espntv_schedule
 						height: 12px
 						line-height: 13px
 
-					p.espntv_normal
+					p.espntv_sub_genre,p.espntv_matchup
 						font-size: 10px
 
-					p.espntv_bold
+					p.espntv_programme
 						color: #3a577f
 						font-size: 13px
 						font-weight: bold
 						height: 27px
-						float: left
+
+					p.espntv_date, p.espntv_time
+						display: none
 
 		#espntv_program_details
 			position: absolute
@@ -383,6 +390,7 @@ div.espntv_schedule
 			left: 20%
 			width: 60%
 			height: 60%
+			min-height: 250px
 
 			.espntv_details_bg
 				width: 100%

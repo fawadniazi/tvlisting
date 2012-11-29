@@ -32,29 +32,29 @@
 				<ul></ul>
 			</div>
 			<div id="espntv_time_line">
-				<ul id="espntv_time_list">
-					<li><img src="img/time_point.png"><p>Test</p></li>
-					<li><img src="img/time_point.png"><p>Test</p></li>
-					<li><img src="img/time_point.png"><p>Test</p></li>
-					<li><img src="img/time_point.png"><p>Test</p></li>
-					<li><img src="img/time_point.png"><p>Test</p></li>
-					<li><img src="img/time_point.png"><p>Test</p></li>
-					<li><img src="img/time_point.png"><p>Test</p></li>
-				</ul>
+				<ul id="espntv_time_list"></ul>
 				<div class="espntv_time_arrow_left"><img src="img/time_arrow_left.png"></div>
 				<div class="espntv_time_arrow_right"><img src="img/time_arrow_right.png"></div>
 			</div>
 			<div id="espntv_programs">
-				<ul>
-					<li class="espntv_live">
-						<p class="espntv_normal">SPORTS NEWS</p>
+				<ul class="ECN1">
+					<li class="espntv live">
+						<p class="espntv_sub_genre">SPORTS NEWS</p>
 						<div>
-							<p class="espntv_bold">Sportscenter Asia</p>
+							<p class="espntv_programme">Sportscenter Asia</p>
 							<img src="img/live_indicator.png">
 						</div>
-						<p class="espntv_normal">Monday Night Verdict</p>
+						<p class="espntv_matchup">Monday Night Verdict</p>
+						<p class="espntv_date">WED 3 Oct</p>
+						<p class="espntv_time">3:00 PM - 7:00 PM</p>
 					</li>
-					<li><p>Test</p></li>
+					<li class="espntv">
+						<p class="espntv_sub_genre">SPORTS NEWS</p>
+						<p class="espntv_programme">Sportscenter Asia</p>
+						<p class="espntv_matchup">Monday Night Verdict</p>
+						<p class="espntv_date">WED 3 Oct</p>
+						<p class="espntv_time">3:00 PM - 7:00 PM</p>
+					</li>
 					<li><p>Test</p></li>
 					<li><p>Test</p></li>
 					<li><p>Test</p></li>

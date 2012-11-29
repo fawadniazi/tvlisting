@@ -132,8 +132,9 @@ div.espntv_heading {
 div.espntv_schedule {
   position: relative;
   width: 905px;
-  min-height: 500px;
+  min-height: 350px;
   margin: 5px auto;
+  overflow: hidden;
 }
 div.espntv_schedule div.espntv_left_column {
   position: relative;
@@ -316,6 +317,7 @@ div.espntv_schedule div.espntv_right_column #espntv_programs ul {
   width: 1000%;
   border-bottom: 1px solid #b4b4b4;
   padding-left: 10%;
+  background-color: #e4e4e4;
 }
 div.espntv_schedule div.espntv_right_column #espntv_programs ul li {
   position: relative;
@@ -330,11 +332,14 @@ div.espntv_schedule div.espntv_right_column #espntv_programs ul li {
 div.espntv_schedule div.espntv_right_column #espntv_programs ul li.espntv {
   background-color: #fff;
 }
-div.espntv_schedule div.espntv_right_column #espntv_programs ul li.espntv_live {
+div.espntv_schedule div.espntv_right_column #espntv_programs ul li.espntv.live {
   background-image: url("../img/live_bg.png");
   background-repeat: repeat;
   border-left: 1px solid #b4b4b4;
   margin-left: -1px;
+}
+div.espntv_schedule div.espntv_right_column #espntv_programs ul li.espntv.live p.espntv_programme {
+  float: left;
 }
 div.espntv_schedule div.espntv_right_column #espntv_programs ul li div {
   position: relative;
@@ -352,15 +357,19 @@ div.espntv_schedule div.espntv_right_column #espntv_programs ul li p {
   height: 12px;
   line-height: 13px;
 }
-div.espntv_schedule div.espntv_right_column #espntv_programs ul li p.espntv_normal {
+div.espntv_schedule div.espntv_right_column #espntv_programs ul li p.espntv_sub_genre,
+div.espntv_schedule div.espntv_right_column #espntv_programs ul li p.espntv_matchup {
   font-size: 10px;
 }
-div.espntv_schedule div.espntv_right_column #espntv_programs ul li p.espntv_bold {
+div.espntv_schedule div.espntv_right_column #espntv_programs ul li p.espntv_programme {
   color: #3a577f;
   font-size: 13px;
   font-weight: bold;
   height: 27px;
-  float: left;
+}
+div.espntv_schedule div.espntv_right_column #espntv_programs ul li p.espntv_date,
+div.espntv_schedule div.espntv_right_column #espntv_programs ul li p.espntv_time {
+  display: none;
 }
 div.espntv_schedule div.espntv_right_column #espntv_program_details {
   position: absolute;
@@ -368,6 +377,7 @@ div.espntv_schedule div.espntv_right_column #espntv_program_details {
   left: 20%;
   width: 60%;
   height: 60%;
+  min-height: 250px;
 }
 div.espntv_schedule div.espntv_right_column #espntv_program_details .espntv_details_bg {
   width: 100%;

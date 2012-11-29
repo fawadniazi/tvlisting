@@ -63,6 +63,7 @@ define(['helper/app','libs/text!template/desktop.tpl'],function(App,templ){
 
 			$timeList.parent().find('.espntv_time_arrow_left').on('mousedown touchstart',function(ev){
 				ev.preventDefault();
+				self.currentPosition = parseFloat($timeList.css('left'));
 				self.currentPosition += self.currentViewWidth;
 				if (self.currentPosition > 0){
 					self.currentPosition = 0;
@@ -70,13 +71,14 @@ define(['helper/app','libs/text!template/desktop.tpl'],function(App,templ){
 				$timeList.animate({
 					left: self.currentPosition
 				},300);
-				$programList.animate({
+				$('#espntv_programs ul').animate({
 					left: self.currentPosition
 				},300);
 			});
 
 			$timeList.parent().find('.espntv_time_arrow_right').on('mousedown touchstart',function(ev){
 				ev.preventDefault();
+				self.currentPosition = parseFloat($timeList.css('left'));
 				self.currentPosition -= self.currentViewWidth;
 				if (self.currentPosition < -self.currentViewWidth*9.1){
 					self.currentPosition = -self.currentViewWidth*9.1;
@@ -84,7 +86,7 @@ define(['helper/app','libs/text!template/desktop.tpl'],function(App,templ){
 				$timeList.animate({
 					left: self.currentPosition
 				},300);
-				$programList.animate({
+				$('#espntv_programs ul').animate({
 					left: self.currentPosition
 				},300);
 			});
@@ -115,10 +117,10 @@ define(['helper/app','libs/text!template/desktop.tpl'],function(App,templ){
 							endLeft = -self.currentViewWidth*9.1;
 						}
 						$timeList.css('left',endLeft+'px');
-						$programList.css('left',endLeft+'px');
+						$('#espntv_programs ul').css('left',endLeft+'px');
 					}
 				});
-				$timeList.parent().on('mouseup',function(ev){
+				$timeList.parent().on('mouseup mouseleave',function(ev){
 					ev.preventDefault();
 					init = false;
 				});
@@ -149,7 +151,7 @@ define(['helper/app','libs/text!template/desktop.tpl'],function(App,templ){
 						endLeft = -self.currentViewWidth*9.1;
 					}
 					$timeList.css('left',endLeft+'px');
-					$programList.css('left',endLeft+'px');
+					$('#espntv_programs ul').css('left',endLeft+'px');
 				});
 				
 				// time_line.addEventListener('touchend',function(ev){
@@ -184,10 +186,14 @@ define(['helper/app','libs/text!template/desktop.tpl'],function(App,templ){
 							endLeft = -self.currentViewWidth*9.1;
 						}
 						$timeList.css('left',endLeft+'px');
-						$programList.css('left',endLeft+'px');
+						$('#espntv_programs ul').css('left',endLeft+'px');
 					}
 				});
 				time_line.addEventListener('mouseup',function(ev){
+					ev.preventDefault();
+					init = false;
+				});
+				$timeList.parent().on('mouseleave',function(ev){
 					ev.preventDefault();
 					init = false;
 				});
@@ -199,19 +205,19 @@ define(['helper/app','libs/text!template/desktop.tpl'],function(App,templ){
 			var touch,startTouch,endLeft;
 			var init = false, dragging = false;
 			var $timeList = $('#espntv_time_line ul');
-			var $programList = $('#espntv_programs ul');
+			var $programList = $('#espntv_programs');
 
 			/* Listen to drag events */
 			
 			if (!programs.addEventListener){ // if IE < 9
-				$programList.parent().on('mousedown',function(ev){
+				$programList.on('mousedown',function(ev){
 					ev.preventDefault();
 					init = true;
 					dragging = false;
 					startTouch = ev.screenX;
 					self.currentPosition = parseFloat($timeList.css('left'));
 				});
-				$programList.parent().on('mousemove',function(ev){
+				$programList.on('mousemove',function(ev){
 					ev.preventDefault();
 					if (init){
 						dragging = true;
@@ -223,10 +229,10 @@ define(['helper/app','libs/text!template/desktop.tpl'],function(App,templ){
 							endLeft = -self.currentViewWidth*9.1;
 						}
 						$timeList.css('left',endLeft+'px');
-						$programList.css('left',endLeft+'px');
+						$('#espntv_programs ul').css('left',endLeft+'px');
 					}
 				});
-				$programList.parent().on('mouseup',function(ev){
+				$programList.on('mouseup mouseleave',function(ev){
 					ev.preventDefault();
 					init = false;
 				});
@@ -257,7 +263,7 @@ define(['helper/app','libs/text!template/desktop.tpl'],function(App,templ){
 						endLeft = -self.currentViewWidth*9.1;
 					}
 					$timeList.css('left',endLeft+'px');
-					$programList.css('left',endLeft+'px');
+					$('#espntv_programs ul').css('left',endLeft+'px');
 				});
 				
 				// Listen to mouse events
@@ -281,20 +287,25 @@ define(['helper/app','libs/text!template/desktop.tpl'],function(App,templ){
 							endLeft = -self.currentViewWidth*9.1;
 						}
 						$timeList.css('left',endLeft+'px');
-						$programList.css('left',endLeft+'px');
+						$('#espntv_programs ul').css('left',endLeft+'px');
 					}
 				});
 				programs.addEventListener('mouseup',function(ev){
 					ev.preventDefault();
 					init = false;
 				});
+				$programList.on('mouseleave',function(ev){
+					ev.preventDefault();
+					init = false;
+				});
 			}
 
-			$programList.find('li').on('mouseup touchend',function(ev){
+			$('#espntv_programs').on('mouseup touchend','ul li',function(ev){
 				ev.preventDefault();
 				if (!dragging){
 					//$(this).trigger('mySlider_click_event');
-					console.log($programList.find('li').index(this));
+					//console.log($programList.find('li').index(this));
+					console.log('view details');
 				}
 			});
 		},
@@ -471,24 +482,10 @@ define(['helper/app','libs/text!template/desktop.tpl'],function(App,templ){
 			}
 		},
 
-		bindPromo: function(){
-			var self = this;
-			var index;
-			var $slider = $('#espntv_main_promo .espntv_slider ul li');
-
-			$slider.on('mousedown touchstart', function(ev){
-				ev.preventDefault();
-				index = $slider.index(this);
-				self.resetPromo = true;
-
-			});
-
-		},
-
 		initDate: function(){
 			var self = this;
 			var days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
-			var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+			var months = moment.monthsShort;
 			var tmpStr = '';
 			var tmp = null;
 			var $list = $('#espntv_select_date ul');
@@ -573,7 +570,8 @@ define(['helper/app','libs/text!template/desktop.tpl'],function(App,templ){
 		updatePrograms: function(channelList){
 			var self = this;
 			var fetchUrl = 'json/';
-			
+			var count = 0;
+
 			self.programsData = {};
 
 			for (var i = 0; i < channelList.length; i++){
@@ -583,11 +581,59 @@ define(['helper/app','libs/text!template/desktop.tpl'],function(App,templ){
 					url: fetchUrl+channelList[i]+self.currentDate.format('YYMMDD')+'.json',
 					success:function(data){
 						$.extend(self.programsData,data);
+						count += 1;
+						if (count == channelList.length){
+							self.refreshPrograms(channelList);
+						}
 					}
 				});
 			}
-			
-			
+		},
+
+		refreshPrograms: function(channelList){
+			var self = this;
+			var months = moment.monthsShort;
+			var tmpArr = [];
+			var tmpStr = '',finalStr = '';
+			var tmpEle = {};
+			var i = 0,j = 0;
+			var lastTime, nextTime, span, date, time;
+
+			for (i = 0; i < channelList.length; i++){
+				tmpArr = self.programsData[channelList[i]];
+				tmpStr = '<ul class="'+channelList[i]+'">';
+				lastTime = moment('00:00:00','HH:mm:ss');
+
+				for (j = 0; j < tmpArr.length; j++){
+					tmpEle = tmpArr[j];
+					nextTime = moment(tmpEle.start_time,'HH:mm:ss');
+					span = nextTime.diff(lastTime)/(1000*60*3);
+					if (span > 0){
+						tmpStr += '<li style="width:'+span*0.2+'%;"></li>';
+					}
+					span = moment(tmpEle.duration,'HH:mm:ss');
+					lastTime = nextTime.add({
+						'h':span.hours(),
+						'm':span.minutes()
+					});
+					span = (span.hours() * 60 + span.minutes()) / 3;
+					date = moment(tmpEle.date,'MM-DD-YY');
+					date = tmpEle.dow+' '+ date.date()+' '+months[date.month()];
+					time = nextTime.format('H:mm A')+' - '+lastTime.format('H:mm A');
+
+					if (tmpEle.live != "L"){
+						tmpStr += '<li class="espntv" style="width:'+span*0.2+'%;"><p class="espntv_sub_genre">'+tmpEle.sub_genre+'</p><p class="espntv_programme">'+tmpEle.programme+'</p><p class="espntv_matchup">'+tmpEle.matchup+'</p><p class="espntv_date">'+date+'</p><p class="espntv_time">'+time+'</p></li>';
+					}
+					else{
+						tmpStr += '<li class="espntv live" style="width:'+span*0.2+'%;"><p class="espntv_sub_genre">'+tmpEle.sub_genre+'</p><div><p class="espntv_programme">'+tmpEle.programme+'</p><img src="img/live_indicator.png"></div><p class="espntv_matchup">'+tmpEle.matchup+'</p><p class="espntv_date">'+date+'</p><p class="espntv_time">'+time+'</p></li>';
+					}
+				}
+
+				tmpStr += '</ul>';
+				finalStr += tmpStr;
+			}
+
+			$('#espntv_programs').empty().append(finalStr);
 		},
 
 		bindRegionList: function(){
@@ -610,7 +656,7 @@ define(['helper/app','libs/text!template/desktop.tpl'],function(App,templ){
 				$container.find('p').html($(this).text());
 				$list.parent().css('display','none');
 				self.currentRegion = $(this).text();
-				self.updateChannelList();
+				//self.updateChannelList();
 			});
 		}
 

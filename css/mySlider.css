@@ -10,6 +10,7 @@
   width: 8%;
   overflow: hidden;
   text-align: center;
+  cursor: pointer;
 }
 .mySlider_container .mySlider_arrow img {
   max-width: 100%;
