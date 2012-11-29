@@ -5,7 +5,7 @@ define(['libs/text!template/app.tpl','helper/utils'],function(templ,utils){
 		template: Em.Handlebars.compile(templ),
 		didInsertElement:function(){
 			this.get('controller').appendHeaderFooter();
-			//this.get('controller').startBindings();
+			this.get('controller').startBindings();
 		}
 	});
 
@@ -44,17 +44,24 @@ define(['libs/text!template/app.tpl','helper/utils'],function(templ,utils){
 				}
 			});
 		},
+
+		updateLeftRightPromo: function(){
+			var promoWidth = ($(window).width()-925)/2;
+			$('#espntv_left_promo').css('width',promoWidth);
+			$('#espntv_right_promo').css('width',promoWidth);
+		},
 		
 		startBindings:function(){
 			var self = this;
 			$(window).resize(function(){
-				if(utils.getWidth() > 480){
-					App.router.transitionTo('desktop.index');
-				} else {
-					App.router.transitionTo('mobile.index');
-				}
+				self.updateLeftRightPromo();
+				// if(utils.getWidth() > 480){
+				// 	App.router.transitionTo('desktop.index');
+				// } else {
+				// 	App.router.transitionTo('mobile.index');
+				// }
 			});
-			
+			self.updateLeftRightPromo();
 		}
 		
 	});

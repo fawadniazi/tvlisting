@@ -2,17 +2,12 @@
 	<div id="espntv_main_promo">
 		<div class="espntv_dummy"></div>
 		<div class="espntv_promo">
-			<img src="http://www.espnstar.com/essvideos/images/tvlisitng/TV-Listings-Banner-VerdictLaLiga.jpg">
+			<img class="espntv_promo" src="">
 			<img class="espntv_buffer" src="">
 			<div class="espntv_msg"></div>
-			<p class="espntv_msg">Tune in every WEDNESDAY 11:00 PM - HKT, SGT</p>
+			<p class="espntv_msg"></p>
 			<div class="espntv_slider">
-				<ul>
-					<li class="selected"></li>
-					<li></li>
-					<li></li>
-					<li></li>
-				</ul>
+				<ul></ul>
 			</div>
 		</div>
 	</div>
@@ -23,63 +18,18 @@
 				<p>Select Region</p>
 				<div class="espntv_selected_region">
 					<img src="img/down_arrow.png">
-					India
+					<p>China</p>
 				</div>
-				<ul id="espntv_region_list">
-					<li>China</li>
-					<li>Hong Kong</li>
-					<li>India</li>
-					<li>Nepal</li>
-					<li>Bangladesh</li>
-					<li>Pakistan</li>
-					<li>Sri Lanka</li>
-					<li>Maldives</li>
-					<li>Bhutan</li>
-					<li>Malaysia</li>
-					<li>Malaysia - Fox Football</li>
-					<li>Philippines</li>
-					<li>Indonesia (Indovision)</li>
-					<li>Indonesia (others)</li>
-					<li>Vietnam</li>
-					<li>Cambodia</li>
-					<li>Papau New Guinea</li>
-					<li>Myanmar</li>
-					<li>Mongolia</li>
-					<li>Brunei</li>
-					<li>Macau</li>
-					<li>Korea</li>
-					<li>Thailand</li>
-					<li>Singapore</li>
-					<li>Taiwan</li>
-				</ul>
+				<ul id="espntv_region_list"></ul>
 			</div>
 			<div id="espntv_channels">
 				<div class="espntv_showing">SHOWING NOW</div>
-				<ul id="espntv_channel_list">
-					<li><img src="img/logo/espn.png"></li>
-					<li><img src="img/logo/espn.png"></li>
-					<li><img src="img/logo/espn.png"></li>
-					<li><img src="img/logo/espn.png"></li>
-					<li><img src="img/logo/espn.png"></li>
-					<li><img src="img/logo/espn.png"></li>
-				</ul>
+				<ul id="espntv_channel_list"></ul>
 			</div>
 		</div>
 		<div class="espntv_right_column">
 			<div id="espntv_select_date">
-				<ul>
-					<li class="espntv_selected_date"><img src="img/date_selected.png"><p>WED 3 Oct</p></li>
-					<li><p>THU 4 Oct</p></li>
-					<li><p>FRI 5 Oct</p></li>
-					<li><p>SAT 6 Oct</p></li>
-					<li><p>SUN 7 Oct</p></li>
-					<li><p>MON 8 Oct</p></li>
-					<li><p>TUE 9 Oct</p></li>
-					<li><p>WED 10 Oct</p></li>
-					<li><p>THU 11 Oct</p></li>
-					<li><p>FRI 12 Oct</p></li>
-				</ul>
-
+				<ul></ul>
 			</div>
 			<div id="espntv_time_line">
 				<ul id="espntv_time_list">
@@ -155,13 +105,16 @@
 						<p class="espntv_bold">Baltimore Orioles vs. Tampa Bay Rays</p>
 						<p class="espntv_normal">MLB Regular Season 2012</p>
 						<p class="espntv_replay">Replay</p>
-						<p class="espntv_normal">4 Oct 03:30 AM</p>
-						<p class="espntv_normal">9 Oct 03:30 PM</p>
-						<p class="espntv_normal">10 Oct 03:30 AM</p>
+						<p class="espntv_replay_date">4 Oct</p><span>03:30 AM</span><br/>
+						<p class="espntv_replay_date">9 Oct</p><span>03:30 AM</span><br/>
+						<p class="espntv_replay_date">10 Oct</p><span>03:30 AM</span><br/>
 						<img class="espntv_details_live" src="img/live_indicator.png">
 					</div>
 					<div class="espntv_details_share">
 						<p>SHARE</p>
+						<a class="espntv_details_social twitter"><img src="img/twitter.png" alt="Share on Twitter"></a>
+						<a class="espntv_details_social facebook"><img src="img/facebook.png" alt="Share on Facebook"></a>
+						<a class="espntv_details_social gplus"><img src="img/gplus.png" alt="Share on Google +"></a>
 					</div>
 					<a class="espntv_details_close"><img src="img/details_close.png"></a>
 				</div>

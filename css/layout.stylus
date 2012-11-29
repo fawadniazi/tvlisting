@@ -84,6 +84,8 @@ input[type="text"]
 			color: white
 			margin: 3% 1%
 			overflow: hidden
+			font-size: 25px;
+			line-height: 35px
 
 		div.espntv_slider
 			position: absolute
@@ -179,6 +181,7 @@ div.espntv_schedule
 				cursor: pointer
 				display: none
 				background-color: white
+				z-index: 1000
 
 				li:hover
 					background-color: #B4B4B4
@@ -337,7 +340,11 @@ div.espntv_schedule
 					background-image: url('../img/time_border.png')
 					background-repeat: repeat-y
 					overflow: hidden
+					background-color: #e4e4e4
 
+					&.espntv
+						background-color: white
+						
 					&.espntv_live
 						background-image: url('../img/live_bg.png')
 						background-repeat: repeat
@@ -405,7 +412,7 @@ div.espntv_schedule
 
 				img.espntv_details_channel
 					margin: 5px
-					max-width: 25%
+					max-width: 20%
 
 				.espntv_details_content
 					position: relative
@@ -422,11 +429,44 @@ div.espntv_schedule
 						font-size: 12px
 
 					p.espntv_bold
-						font-size: 14px
+						font-size: 16px
 						font-weight: bold
 
 					p.espntv_replay
 						margin-top: 10px
+
+					p.espntv_replay_date
+						width: 10%
+						margin-right: 5px
+						float: left
+						text-align: right
+
+				.espntv_details_share
+					position: absolute
+					bottom: 5px
+					right: 5px
+					width: 30%
+					height: 50px
+					color: #ACA99A
+
+					p
+						margin: 0
+						height: 20px
+
+					a.espntv_details_social
+						position: relative
+						width: 20%
+						height: 20px
+						float: left
+						margin-right: 10%
+						overflow: hidden
+						cursor: pointer
+
+						img
+							width: 100%
+							height: 100%
+
+						
 
 
 div.espntv_bottom
