@@ -14,7 +14,7 @@ p {
   font-family: "Arial";
 }
 /*-------------------------------------------- Override ESPN template ---------------------------------------------*/
-#holdall {
+#holdall{
   position: relative;
   text-align: left;
   width: 990px;
