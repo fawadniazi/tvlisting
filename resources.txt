@@ -1,4 +1,0 @@
-Program schedule: http://apps.espnstar.asia/tvlisting/data/ECN1121120.json (ECN1YYMMDD)
-Promo: http://apps.espnstar.asia/tvlisting/program.json
-Header: http://www.espnstar.com/development/template_header/
-Footer: http://www.espnstar.com/development/template_footer/

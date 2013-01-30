@@ -1,0 +1,164 @@
+{
+    "channels":{
+        "channel":[
+            {
+                "code":"ECN1",
+                "name":"ESPN China",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_espn.png"
+            },
+            {
+                "code":"EHK1",
+                "name":"ESPN Hong Kong",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_foxsports.png"
+            },
+            {
+                "code":"EID1",
+                "name":"ESPN Indonesia",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_foxsports.png"
+            },
+			{
+                "code":"EIN1",
+                "name":"ESPN India",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_espn.png"
+            },
+			{
+                "code":"EINA",
+                "name":"ESPN HD India",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_espn-hd.png"
+            },
+			{
+                "code":"EML1",
+                "name":"ESPN Malaysia",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_foxsports.png"
+            },
+			{
+                "code":"EMLA",
+                "name":"ESPN HD Malaysia",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_foxsports-plus.png"
+            },
+			{
+                "code":"EPH1",
+                "name":"ESPN Philippines",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_foxsports.png"
+            },
+			{
+                "code":"EPK1",
+                "name":"ESPN Pakistan",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_foxsports.png"
+            },
+			{
+                "code":"ESE1",
+                "name":"ESPN S.E.A.",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_foxsports.png"
+            },
+			{
+                "code":"ESEA",
+                "name":"ESPN HD S.E.A.",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_foxsports-plus.png"
+            },
+			{
+                "code":"ESG1",
+                "name":"ESPN Singapore",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_foxsports.png"
+            },
+			{
+                "code":"ESN1",
+                "name":"ESPN S.E.A. N.P.L.",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_foxsports.png"
+            },
+			{
+                "code":"ETH1",
+                "name":"ESPN Thailand",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_foxsports.png"
+            },
+			{
+                "code":"ETW1",
+                "name":"ESPN Taiwan",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_foxsports.png"
+            },
+			{
+                "code":"ETWA",
+                "name":"ESPN HD Taiwan",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_foxsports-plus.png"
+            },
+			{
+                "code":"SCN1",
+                "name":"STAR Sports China",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_starsports.png"
+            },
+			{
+                "code":"SCR1",
+                "name":"STAR Cricket",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_cricket.png"
+            },
+			{
+                "code":"SCRA",
+                "name":"STAR Cricket HD",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_cricket-hd.png"
+            },
+			{
+                "code":"SEN1",
+                "name":"STAR Sports S.E.A. N.P.L.",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_starsports.png"
+            },
+			{
+                "code":"SHK1",
+                "name":"STAR Sports Hong Kong",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_starsports.png"
+            },
+			{
+                "code":"SID1",
+                "name":"STAR Sports Indonesia",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_starsports.png"
+            },
+			{
+                "code":"SIN1",
+                "name":"STAR Sports India",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_starsports.png"
+            },
+			{
+                "code":"SML1",
+                "name":"STAR Sports Malaysia",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_starsports.png"
+            },
+			{
+                "code":"SPK1",
+                "name":"STAR Sports Pakistan",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_starsports.png"
+            },
+			{
+                "code":"SSE1",
+                "name":"STAR Sports S.E.A.",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_starsports.png"
+            },
+			{
+                "code":"SSG1",
+                "name":"STAR Sports Singapore",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_starsports.png"
+            },
+			{
+                "code":"STH1",
+                "name":"STAR Sports Thailand",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_starsports.png"
+            },
+			{
+                "code":"STW1",
+                "name":"STAR Sports Taiwan",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_starsports.png"
+            },
+			{
+                "code":"STWA",
+                "name":"STAR Sports HD Taiwan",
+                "logo":"http://apps.espnstar.asia/tvlisting/logos/logo_starsports"
+            }
+        ]
+    }
+}
+
+
+
+
+
+	
+	
+	

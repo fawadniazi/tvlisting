@@ -2,7 +2,7 @@
 Requirement: jQuery
 Usage: wrap <ul> element inside a <div> and call mySlider function upon parent <div> element
 Full list of settings
-settings = {	
+settings = {
 	autoUpdate: true,				// Allow dynamic changes of <ul> element (optional, default false)
 	autoUpdateInterval: 1000,		// Time interval to perform auto update (optional, default 1000ms)
 	width: '80%',					// Width (in %) of slider compared to window width
@@ -36,31 +36,33 @@ settings = {
 			if (!settings.width || !settings.height || !settings.itemWidth){
 				$.error('mySlider requires width, height and itemWidth to be provided');
 			}
-		}
+		};
 
 		/* Init structure for mySlider add necessary elements, classes and ids */
 
 		var initStructure = function(){
 			
-			id = 'mySlider_'+$('div.mySlider_main').length 							// Unique ID for each mySlider entity
+			id = 'mySlider_'+$('div.mySlider_main').length;							// Unique ID for each mySlider entity
 
 			$target.addClass('mySlider_container');									// Add container class
-			$target.find('ul').wrap('<div class="mySlider_main" id="'+id+'"/>'); 	// Add main element
+			$target.find('ul').wrap('<div class="mySlider_main" id="'+id+'"/>');	// Add main element
 
 			/* Add navigation arrows (optional) */
 			
 			if (settings.arrows){
-				var arrow = "<div class=\"mySlider_arrow\"><img/></div>";
+				var arrow = "<div class=\"mySlider_arrow\"><span class=\"dummy\"></span><img class=\"enabled\"/><img class=\"disabled\"/></div>";
 
 				/* Left arrow */
 
 				$target.prepend(arrow);
-				$target.find('.mySlider_arrow:first-child img').attr('src',settings.imgPath+'/arrow_left.png');
+				$target.find('.mySlider_arrow:first-child img.enabled').attr('src',settings.imgPath+'/arrow_left.png');
+				$target.find('.mySlider_arrow:first-child img.disabled').attr('src',settings.imgPath+'/arrow_left_disabled.png');
 				
 				/* Right arrow */
 
 				$target.append(arrow);
-				$target.find('.mySlider_arrow:last-child img').attr('src',settings.imgPath+'/arrow_right.png');		
+				$target.find('.mySlider_arrow:last-child img.enabled').attr('src',settings.imgPath+'/arrow_right.png');
+				$target.find('.mySlider_arrow:last-child img.disabled').attr('src',settings.imgPath+'/arrow_right_disabled.png');
 			}
 				
 			/* Add bottom navigation bar (optional) */
@@ -151,7 +153,7 @@ settings = {
 						margin: '0 '+info.navbarMargin+'%'
 					});
 
-					/* Adjust height of arrows incase navbar is enabled */			
+					/* Adjust height of arrows incase navbar is enabled */
 					if (settings.arrows){
 						$target.find('.mySlider_arrow').css('height',info.mainHeight);
 					}
@@ -160,7 +162,7 @@ settings = {
 					});
 					setNavBar($list);	// Create actual navbar and bind actions to navbar <li> elements
 				}
-			},50);	
+			},50);
 		};
 
 		/* Auto update <ul> element for dynamical changes */
@@ -242,10 +244,14 @@ settings = {
 		/* Adjust current view */
 
 		var adjustPosition = function($list,quick){
-			
 			var dis,items;
 
-			info.currentLeft = parseFloat($list.css('left'));			
+			var $leftArrowEn = $target.find('.mySlider_arrow').eq(0).find('img.enabled');
+			var $leftArrowDis = $target.find('.mySlider_arrow').eq(0).find('img.disabled');
+			var $rightArrowEn = $target.find('.mySlider_arrow').eq(1).find('img.enabled');
+			var $rightArrowDis = $target.find('.mySlider_arrow').eq(1).find('img.disabled');
+
+			info.currentLeft = parseFloat($list.css('left'));
 			
 			if (info.currentLeft >= 0){
 				if (quick){
@@ -257,6 +263,10 @@ settings = {
 					},100);
 				}
 				info.viewIdx = 0;
+				$leftArrowEn.css('display','none');
+				$leftArrowDis.css('display','inline-block');
+				$rightArrowDis.css('display','none');
+				$rightArrowEn.css('display','inline-block');
 			}
 			else if (info.currentLeft <= (info.mainWidthPx - info.listWidth)){
 				if (info.mainWidthPx < info.listWidth){
@@ -269,6 +279,10 @@ settings = {
 						},100);
 					}
 					info.viewIdx = info.viewCount - 1;
+					$leftArrowDis.css('display','none');
+					$leftArrowEn.css('display','inline-block');
+					$rightArrowEn.css('display','none');
+					$rightArrowDis.css('display','inline-block');
 				}
 				else {
 					if (quick){
@@ -277,9 +291,13 @@ settings = {
 					else {
 						$list.animate({
 							left: 0
-						},100);	
+						},100);
 					}
 					info.viewIdx = 0;
+					$leftArrowEn.css('display','none');
+					$leftArrowDis.css('display','inline-block');
+					$rightArrowDis.css('display','none');
+					$rightArrowEn.css('display','inline-block');
 				}
 			}
 			else {
@@ -290,7 +308,7 @@ settings = {
 					items = Math.floor(items);
 				}
 				else {
-					items = Math.floor(items)+1;	
+					items = Math.floor(items)+1;
 				}
 
 				dis = items * (info.itemWidth+info.margin);
@@ -301,7 +319,7 @@ settings = {
 				else {
 					$list.animate({
 						left: -dis+'px'
-					},100);	
+					},100);
 				}
 				
 				dis /= info.mainWidthPx;
@@ -312,6 +330,10 @@ settings = {
 					dis = Math.floor(dis) + 1;
 				}
 				info.viewIdx = dis;
+				$leftArrowDis.css('display','none');
+				$leftArrowEn.css('display','inline-block');
+				$rightArrowDis.css('display','none');
+				$rightArrowEn.css('display','inline-block');
 			}
 
 			/* Set current active view in navbar if applicable */
@@ -352,7 +374,7 @@ settings = {
 		var setBindings = function($list){
 			
 			var slider = document.getElementById(id);
-			var touch,startTouch,endLeft;
+			var touch,startTouch,endLeft, startY;
 			var init = false;
 
 			/* Listen to drag events */
@@ -371,51 +393,68 @@ settings = {
 					if (init){
 						dragging = true;
 						endLeft = info.currentLeft + ev.screenX - startTouch;
-						$list.css('left',endLeft+'px');	
+						$list.css('left',endLeft+'px');
 					}
 				});
-				$slider.on('mouseup',function(ev){
+				$slider.on('mouseup mouseleave',function(ev){
 					ev.preventDefault();
 					if (dragging){
-						$list.animate({
-							left: '+='+(endLeft - info.currentLeft)/5+'px'
-						},400,function(){
-							adjustPosition($list,false);	
-						});	
+						if (settings.kinetic){
+							$list.animate({
+								left: '+='+(endLeft - info.currentLeft)/5+'px'
+							},400,function(){
+								adjustPosition($list,false);
+							});
+						}
+						else{
+							adjustPosition($list,false);
+						}
 					}
 					init = false;
+					dragging = false;
 				});
 			}
 			else{	// if IE9 or above
 				// Listen to touch events
 
 				slider.addEventListener('touchstart',function(ev){
-					ev.preventDefault();
+					// ev.preventDefault();
 					init = true;
 					dragging = false;
 					info.currentLeft = parseFloat($list.css('left'));
 				});
 
 				slider.addEventListener('touchmove',function(ev){
-					ev.preventDefault();
+					
 					touch = ev.touches[0];
 					if (init){
 						dragging = true;
 						startTouch = touch.pageX;
+						startY = touch.pageY;
 						init = false;
 					}
+
+					if (Math.abs(touch.pageX - startTouch) > 2*Math.abs(touch.pageY - startY)){
+						ev.preventDefault();
+					}
+
 					endLeft = info.currentLeft + touch.pageX - startTouch;
 					$list.css('left',endLeft+'px');
 				});
 				
 				slider.addEventListener('touchend',function(ev){
-					ev.preventDefault();
+					// ev.preventDefault();
 					if (dragging){
-						$list.animate({
-							left: '+='+(endLeft - info.currentLeft)/5+'px'
-						},400,function(){
-							adjustPosition($list,false);	
-						});
+						if (settings.kinetic){
+							$list.animate({
+								left: '+='+(endLeft - info.currentLeft)/5+'px'
+							},400,function(){
+								adjustPosition($list,false);
+							});
+						}
+						else{
+							adjustPosition($list,false);
+						}
 					}
 				});
 
@@ -439,40 +478,73 @@ settings = {
 				slider.addEventListener('mouseup',function(ev){
 					ev.preventDefault();
 					if (dragging){
-						$list.animate({
-							left: '+='+(ev.pageX - startTouch)/5+'px'
-						},400,function(){
-							adjustPosition($list,false);	
-						});
+						if (settings.kinetic){
+							$list.animate({
+								left: '+='+(ev.pageX - startTouch)/5+'px'
+							},400,function(){
+								adjustPosition($list,false);
+							});
+						}
+						else{
+							adjustPosition($list,false);
+						}
 					}
 					init = false;
+				});
+				$list.parent().on('mouseleave', function(ev){
+					ev.preventDefault();
+					if (dragging){
+						if (settings.kinetic){
+							$list.animate({
+								left: '+='+(ev.pageX - startTouch)/5+'px'
+							},400,function(){
+								adjustPosition($list,false);
+							});
+						}
+						else{
+							adjustPosition($list,false);
+						}
+					}
+					init = false;
+					dragging = false;
 				});
 			}
 
 			/* Binding arrows to click/touch events */
 
 			var adjust = false;
+			var $leftArrowEn = $target.find('.mySlider_arrow').eq(0).find('img.enabled');
+			var $leftArrowDis = $target.find('.mySlider_arrow').eq(0).find('img.disabled');
+			var $rightArrowEn = $target.find('.mySlider_arrow').eq(1).find('img.enabled');
+			var $rightArrowDis = $target.find('.mySlider_arrow').eq(1).find('img.disabled');
 
 			// Left arrow
 			$target.find('.mySlider_arrow').eq(0).on('mousedown touchstart',function(ev){
 				ev.preventDefault();
-				
-				if (info.viewIdx > 0){
-					info.viewIdx -= 1;
-				}
-				endLeft = - info.viewIdx * info.mainWidthPx;
-				
-				$list.animate({
-					left: endLeft + 'px'
-				},200,function(){
-					if (adjust){
-						adjustPosition($list,false);
-					}
-				});
+				if ($leftArrowDis.css('display')=='none'){
 
-				if (settings.navbar){	// Reset current active view in navbar
-					$navbar.removeClass('active');
-					$navbar.eq(info.viewIdx).addClass('active');
+					$leftArrowEn.css('display','none');
+					$leftArrowDis.css('display','inline-block');
+					$rightArrowEn.css('display','inline-block');
+					$rightArrowDis.css('display','none');
+
+					if (info.viewIdx > 0){
+						info.viewIdx -= 1;
+					}
+					endLeft = - info.viewIdx * info.mainWidthPx;
+					
+					$list.animate({
+						left: endLeft + 'px'
+					},200,function(){
+						if (adjust){
+							adjustPosition($list,false);
+						}
+					});
+
+					if (settings.navbar){	// Reset current active view in navbar
+						$navbar.removeClass('active');
+						$navbar.eq(info.viewIdx).addClass('active');
+					}
 				}
 				
 			});
@@ -480,28 +552,35 @@ settings = {
 			// Right arrow
 			$target.find('.mySlider_arrow').eq(1).on('mousedown touchstart',function(ev){
 				ev.preventDefault();
-				
-				if (info.viewIdx < (info.viewCount - 1)){
-					info.viewIdx += 1;
-				}
-				if ((info.viewIdx == (info.viewCount - 1))&&(info.viewIdx > 0)){
-					endLeft = info.mainWidthPx - info.listWidth;
-				}
-				else {
-					endLeft = - info.viewIdx * info.mainWidthPx;
-				}
-				
-				$list.animate({
-					left: endLeft + 'px'
-				},200,function(){
-					if (adjust){
-						adjustPosition($list,false);
-					}
-				});
+				if ($rightArrowDis.css('display')=='none'){
 
-				if (settings.navbar){	// Reset current active view in navbar
-					$navbar.removeClass('active');
-					$navbar.eq(info.viewIdx).addClass('active');
+					$leftArrowEn.css('display','inline-block');
+					$leftArrowDis.css('display','none');
+					$rightArrowEn.css('display','none');
+					$rightArrowDis.css('display','inline-block');
+
+					if (info.viewIdx < (info.viewCount - 1)){
+						info.viewIdx += 1;
+					}
+					if ((info.viewIdx == (info.viewCount - 1))&&(info.viewIdx > 0)){
+						endLeft = info.mainWidthPx - info.listWidth;
+					}
+					else {
+						endLeft = - info.viewIdx * info.mainWidthPx;
+					}
+					
+					$list.animate({
+						left: endLeft + 'px'
+					},200,function(){
+						if (adjust){
+							adjustPosition($list,false);
+						}
+					});
+
+					if (settings.navbar){	// Reset current active view in navbar
+						$navbar.removeClass('active');
+						$navbar.eq(info.viewIdx).addClass('active');
+					}
 				}
 			});
 
@@ -525,10 +604,10 @@ settings = {
 		initStructure();
 		initDimension();
 		setTimeout(function(){
-			setBindings($list);	
+			setBindings($list);
 			if (settings.autoUpdate){
 				autoUpdate();
 			}
 		},100);
-	}
+	};
 })(jQuery);
