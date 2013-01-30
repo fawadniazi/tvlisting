@@ -25,7 +25,7 @@ define(['helper/app','libs/text!template/desktop.tpl'],function(App,templ){
 		programsData: {},				// Store programs data from JSON
 		logosData: {},					// Store logos data from JSON
 		resetSize: false,				// Trigger when screen size changes
-		espntv_env: 'dev',				// Environment flag (dev or prod)
+		espntv_env: 'prod',				// Environment flag (dev or prod)
 
 		/* Add double click ads tag */
 
